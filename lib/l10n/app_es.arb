@@ -1,0 +1,9 @@
+{
+  "counterTitle": "¡Esto es un contador!",
+  "comingSoon": "Próximamente...",
+  "yes": "Sí",
+  "no": "No",
+  "cancel": "Cancelar",
+  "deleteAllDataConfirmationTitle": "¿Eliminar todos los datos almacenados?",
+  "deleteAllDataConfirmationBody": "La aplicación debe reiniciarse para borrar los valores actuales."
+}

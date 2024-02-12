@@ -1,0 +1,9 @@
+{
+  "counterTitle": "이것은 카운터입니다!",
+  "comingSoon": "곧 출시 예정...",
+  "yes": "예",
+  "no": "아니오",
+  "cancel": "취소",
+  "deleteAllDataConfirmationTitle": "모든 저장된 데이터를 삭제하시겠습니까?",
+  "deleteAllDataConfirmationBody": "현재 값은 앱을 다시 시작해야만 지워집니다."
+}

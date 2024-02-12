@@ -1,0 +1,6 @@
+package com.dy0gu.cubik
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

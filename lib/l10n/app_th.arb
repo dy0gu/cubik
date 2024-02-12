@@ -1,0 +1,9 @@
+{
+  "counterTitle": "Bu bir sayaç!",
+  "comingSoon": "Yakında...",
+  "yes": "Evet",
+  "no": "Hayır",
+  "cancel": "İptal",
+  "deleteAllDataConfirmationTitle": "Tüm kayıtlı verileri silmek istiyor musunuz?",
+  "deleteAllDataConfirmationBody": "Geçerli değerlerin silinebilmesi için uygulama yeniden başlatılmalıdır."
+}

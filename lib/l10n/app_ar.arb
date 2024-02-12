@@ -1,0 +1,9 @@
+{
+  "counterTitle": "هذا عداد!",
+  "comingSoon": "قريباً...",
+  "yes": "نعم",
+  "no": "لا",
+  "cancel": "إلغاء",
+  "deleteAllDataConfirmationTitle": "حذف جميع البيانات المخزنة؟",
+  "deleteAllDataConfirmationBody": "يحتاج التطبيق إلى إعادة التشغيل لمحو القيم الحالية."
+}

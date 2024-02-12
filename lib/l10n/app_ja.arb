@@ -1,0 +1,9 @@
+{
+  "counterTitle": "これはカウンターです！",
+  "comingSoon": "近日公開...",
+  "yes": "はい",
+  "no": "いいえ",
+  "cancel": "キャンセル",
+  "deleteAllDataConfirmationTitle": "すべての保存データを削除しますか？",
+  "deleteAllDataConfirmationBody": "現在の値を消去するにはアプリを再起動する必要があります。"
+}

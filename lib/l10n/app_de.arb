@@ -1,0 +1,9 @@
+{
+  "counterTitle": "Dies ist ein Zähler!",
+  "comingSoon": "Demnächst verfügbar...",
+  "yes": "Ja",
+  "no": "Nein",
+  "cancel": "Abbrechen",
+  "deleteAllDataConfirmationTitle": "Alle gespeicherten Daten löschen?",
+  "deleteAllDataConfirmationBody": "Die App muss neu gestartet werden, damit die aktuellen Werte gelöscht werden können."
+}

@@ -1,0 +1,9 @@
+{
+  "counterTitle": "Это счетчик!",
+  "comingSoon": "Скоро...",
+  "yes": "Да",
+  "no": "Нет",
+  "cancel": "Отмена",
+  "deleteAllDataConfirmationTitle": "Удалить все сохраненные данные?",
+  "deleteAllDataConfirmationBody": "Приложение должно быть перезапущено для стирания текущих значений."
+}

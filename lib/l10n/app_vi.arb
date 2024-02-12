@@ -1,0 +1,9 @@
+{
+  "counterTitle": "Đây là một bộ đếm!",
+  "comingSoon": "Sắp có...",
+  "yes": "Có",
+  "no": "Không",
+  "cancel": "Hủy",
+  "deleteAllDataConfirmationTitle": "Xóa tất cả dữ liệu đã lưu?",
+  "deleteAllDataConfirmationBody": "Ứng dụng cần được khởi động lại để dữ liệu hiện tại được xóa."
+}

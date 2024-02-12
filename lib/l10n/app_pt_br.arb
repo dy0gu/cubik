@@ -1,0 +1,14 @@
+{
+  "counterTitle": "Isso é um contador!",
+  "comingSoon": "Em desenvolvimento...",
+  "yes": "Sim",
+  "no": "Não",
+  "cancel": "Cancelar",
+  "system": "Sistema",
+  "deleteAllDataConfirmationTitle": "Apagar todos os dados armazenados?",
+  "deleteAllDataConfirmationBody": "O aplicativo precisa ser reiniciado para que os valores atuais sejam limpos.",
+  "helpTitle": "Como se joga Cubik?",
+  "helpBodyFirst": "O objetivo é simples, precisas de ordenar as peças na sua posição correta, do topo esquerdo para o fundo direito.",
+  "helpBodySecond": "Move as peças usando o espaço vazio. Quando uma peça está na posição correta, irá mostrar uma nova cor de borda.",
+  "statisticMoves": "Número de movimentos feitos nas últimas partidas"
+}
