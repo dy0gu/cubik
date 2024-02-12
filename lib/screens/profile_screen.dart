@@ -121,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                           statistics.previousGameMoves.isEmpty
                               ? Center(
                                   child: Text(
-                                    "No data yet!",
+                                    "${locale.noDataYet}!",
                                     style: theme.textTheme.bodyLarge,
                                   ),
                                 )
@@ -166,47 +166,22 @@ class ProfileScreen extends StatelessWidget {
                                   );
                                 },
                               ),
-                              titlesData: FlTitlesData(
+                              titlesData: const FlTitlesData(
                                 show: true,
-                                topTitles: const AxisTitles(
+                                topTitles: AxisTitles(
                                     sideTitles: SideTitles(showTitles: false)),
-                                rightTitles: const AxisTitles(
+                                rightTitles: AxisTitles(
                                     sideTitles: SideTitles(showTitles: false)),
                                 bottomTitles: AxisTitles(
-                                  axisNameSize: 50,
-                                  axisNameWidget: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Text.rich(
-                                      TextSpan(
-                                        text: "${locale.statisticMoves}  ",
-                                        style: theme.textTheme.bodyLarge,
-                                        children: const [
-                                          WidgetSpan(
-                                            child: SizedBox(
-                                                height: 35,
-                                                child: Icon(
-                                                  Icons.move_down,
-                                                )),
-                                            alignment:
-                                                PlaceholderAlignment.middle,
-                                          ),
-                                        ],
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  sideTitles: const SideTitles(
+                                  sideTitles: SideTitles(
                                     showTitles: false,
                                   ),
                                 ),
                                 leftTitles: AxisTitles(
                                   sideTitles: SideTitles(
-                                      showTitles: true,
-                                      reservedSize: 60,
-                                      interval: statistics
-                                              .previousGameMoves.length
-                                              .toDouble() *
-                                          6),
+                                    showTitles: true,
+                                    reservedSize: 60,
+                                  ),
                                 ),
                               ),
                               borderData: FlBorderData(
@@ -227,7 +202,24 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 15),
+                    Text.rich(
+                      TextSpan(
+                        text: "${locale.statisticMoves}  ",
+                        style: theme.textTheme.bodyLarge,
+                        children: const [
+                          WidgetSpan(
+                            child: SizedBox(
+                                height: 35,
+                                child: Icon(
+                                  Icons.move_down,
+                                )),
+                            alignment: PlaceholderAlignment.middle,
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ],
