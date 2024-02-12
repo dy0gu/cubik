@@ -41,11 +41,11 @@ class SettingsScreen extends StatelessWidget {
             leadingIcon: const Icon(Icons.color_lens),
             requestFocusOnTap: false,
             initialSelection: context.watch<SettingsBloc>().state.themeMode,
-            onSelected: (ThemeMode? newValue) {
-              if (newValue != null) {
+            onSelected: (ThemeMode? value) {
+              if (value != null) {
                 context
                     .read<SettingsBloc>()
-                    .add(SettingsThemeModeSelected(newValue));
+                    .add(SettingsThemeModeSelected(value));
               }
             },
             dropdownMenuEntries: [
@@ -71,12 +71,8 @@ class SettingsScreen extends StatelessWidget {
             leadingIcon: const Icon(Icons.language),
             requestFocusOnTap: false,
             initialSelection: context.watch<SettingsBloc>().state.locale,
-            onSelected: (Locale? newValue) {
-              if (newValue != null) {
-                context
-                    .read<SettingsBloc>()
-                    .add(SettingsLocaleSelected(newValue));
-              }
+            onSelected: (Locale? value) {
+              context.read<SettingsBloc>().add(SettingsLocaleSelected(value));
             },
             dropdownMenuEntries: [
               DropdownMenuEntry<Locale?>(

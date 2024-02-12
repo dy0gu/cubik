@@ -118,14 +118,13 @@ class ProfileScreen extends StatelessWidget {
                       height: 200,
                       child: Stack(
                         children: [
-                          statistics.previousGameMoves.isEmpty
-                              ? Center(
-                                  child: Text(
-                                    "${locale.noDataYet}!",
-                                    style: theme.textTheme.bodyLarge,
-                                  ),
-                                )
-                              : const SizedBox(),
+                          if (statistics.previousGameMoves.isEmpty)
+                            Center(
+                              child: Text(
+                                "${locale.noDataYet}!",
+                                style: theme.textTheme.bodyLarge,
+                              ),
+                            ),
                           BarChart(
                             BarChartData(
                               barGroups: statistics.previousGameMoves

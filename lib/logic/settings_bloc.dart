@@ -30,7 +30,7 @@ final class SettingsThemeModeSelected extends SettingsEvent {
 }
 
 final class SettingsLocaleSelected extends SettingsEvent {
-  final Locale locale;
+  final Locale? locale;
 
   SettingsLocaleSelected(this.locale);
 }
@@ -55,11 +55,11 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
         locale: state.locale,
         musicVolume: state.musicVolume,
         sfxVolume: state.sfxVolume)));
-    on<SettingsLocaleSelected>(((event, emit) => emit(Settings(
+    on<SettingsLocaleSelected>((event, emit) => emit(Settings(
         themeMode: state.themeMode,
         locale: event.locale,
         musicVolume: state.musicVolume,
-        sfxVolume: state.sfxVolume))));
+        sfxVolume: state.sfxVolume)));
     on<SettingsMusicVolumeChanged>((event, emit) => emit(Settings(
         themeMode: state.themeMode,
         locale: state.locale,
