@@ -74,8 +74,10 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
 
   @override
   Settings fromJson(Map<String, dynamic> json) => (json["theme_mode"] is int &&
-          json["locale_language_code"] is String &&
-          json["locale_country_code"] is String &&
+          (json["locale_language_code"] is String ||
+              json["locale_language_code"] == null) &&
+          (json["locale_country_code"] is String ||
+              json["locale_country_code"] == null) &&
           json["music_volume"] is double &&
           json["sfx_volume"] is double)
       ? Settings(
