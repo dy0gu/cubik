@@ -171,32 +171,6 @@ class SettingsScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 15),
-          ElevatedButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                        title: Text(locale.settingsResetConfirmationTitle),
-                        content: Text(locale.settingsResetConfirmationBody),
-                        actionsAlignment: MainAxisAlignment.center,
-                        actions: [
-                          ElevatedButton(
-                              onPressed: () {
-                                context
-                                    .read<SettingsBloc>()
-                                    .add(SettingsReset());
-                                Navigator.pop(context);
-                              },
-                              child: Text(locale.yes)),
-                          ElevatedButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text(locale.no)),
-                        ],
-                      ));
-            },
-            child: const Icon(Icons.delete_forever),
-          ),
           const SizedBox(height: 30),
         ],
       ),
