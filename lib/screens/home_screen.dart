@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                               builder: (context) => AlertDialog(
                                     title: Text(locale.helpTitle),
                                     content: Text(
-                                        "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
+                                        "${locale.helpBodyFirst}\n${locale.helpBodySecond}"),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [
                                       Tooltip(
@@ -106,6 +106,7 @@ class HomeScreen extends StatelessWidget {
 
                     // Hide current snackbar if any is visible
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
                     Future.delayed(const Duration(milliseconds: 500), () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         duration: const Duration(seconds: 8),

@@ -55,6 +55,8 @@ class SettingsScreen extends StatelessWidget {
                   context
                       .read<SettingsBloc>()
                       .add(SettingsThemeModeSelected(value));
+                  // Hide current snackbar since theme change does not affect existing
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 }
               },
               dropdownMenuEntries: [
@@ -87,6 +89,8 @@ class SettingsScreen extends StatelessWidget {
               initialSelection: context.watch<SettingsBloc>().state.locale,
               onSelected: (Locale? value) {
                 context.read<SettingsBloc>().add(SettingsLocaleSelected(value));
+                // Hide current snackbar since language change does not affect existing
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
               },
               dropdownMenuEntries: [
                 DropdownMenuEntry<Locale?>(
