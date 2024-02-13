@@ -134,10 +134,13 @@ class ProfileScreen extends StatelessWidget {
                       child: Stack(
                         children: [
                           if (statistics.previousGameMoves.length < 2)
-                            Center(
-                              child: Text(
-                                locale.notEnoughStatisticDataYet,
-                                style: theme.textTheme.bodyLarge,
+                            Padding(
+                              padding: const EdgeInsets.all(45),
+                              child: Center(
+                                child: Text(
+                                  locale.notEnoughStatisticDataYet,
+                                  style: theme.textTheme.bodyLarge,
+                                ),
                               ),
                             ),
                           LineChart(
@@ -205,7 +208,7 @@ class ProfileScreen extends StatelessWidget {
                                         getTitlesWidget: (value, meta) =>
                                             const SizedBox.shrink(),
                                         showTitles: true,
-                                        reservedSize: 60)),
+                                        reservedSize: 45)),
                                 leftTitles: AxisTitles(
                                   sideTitles: SideTitles(
                                     getTitlesWidget: (value, meta) =>
@@ -213,7 +216,7 @@ class ProfileScreen extends StatelessWidget {
                                             ? const SizedBox.shrink()
                                             : defaultGetTitle(value, meta),
                                     showTitles: true,
-                                    reservedSize: 60,
+                                    reservedSize: 45,
                                   ),
                                 ),
                               ),
