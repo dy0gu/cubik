@@ -41,16 +41,8 @@ class HomeScreen extends StatelessWidget {
                             builder: (context) => AlertDialog(
                                   title: Text(locale.helpTitle),
                                   content: Text(
-                                      "${locale.helpBodyFirst}\n${locale.helpBodySecond}"),
+                                      "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
                                   actionsAlignment: MainAxisAlignment.center,
-                                  actions: [
-                                    ElevatedButton(
-                                        onPressed: () => Navigator.pop(context),
-                                        child: Icon(
-                                          Icons.close,
-                                          color: theme.colorScheme.primary,
-                                        )),
-                                  ],
                                 ))),
                   ],
                 ),
@@ -89,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                         content: Text.rich(
                           TextSpan(
                             text:
-                                "You won on a ${game.size}x${game.size} board using ${game.moves} ${game.moves == 1 ? "move" : "moves"}!",
+                                "You won using ${game.moves} ${game.moves == 1 ? "move" : "moves"}!",
                             style: theme.textTheme.bodyLarge,
                             children: [
                               const WidgetSpan(child: SizedBox(width: 5)),
@@ -103,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                                     onTap: () => Share.share(
                                         subject:
                                             "My most recent Cubik victory!",
-                                        "I won a game of Cubik on a ${game.size}x${game.size} board using only ${game.moves} ${game.moves == 1 ? "move" : "moves"}! See if you can do better at cubik.win, or using the app."),
+                                        "I won a game of Cubik using only ${game.moves} ${game.moves == 1 ? "move" : "moves"}! See if you can do better at cubik.win, or using the app."),
                                     child: const Icon(Icons.share),
                                   ),
                                 ),
@@ -185,16 +177,16 @@ class HomeScreen extends StatelessWidget {
                                                 color: theme.colorScheme
                                                     .primaryContainer,
                                                 border: Border.all(
-                                                  color:
-                                                      piece.isCorrect(game.size)
-                                                          ? theme.colorScheme
-                                                              .primary
-                                                          : theme.colorScheme
-                                                              .background,
-                                                  width:
-                                                      piece.isCorrect(game.size)
-                                                          ? 2
-                                                          : 0,
+                                                  color: piece.isCorrect(
+                                                          game.boardSize)
+                                                      ? theme
+                                                          .colorScheme.primary
+                                                      : theme.colorScheme
+                                                          .background,
+                                                  width: piece.isCorrect(
+                                                          game.boardSize)
+                                                      ? 2
+                                                      : 0,
                                                 ),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -241,7 +233,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 30),
         ],
       ),
     );
