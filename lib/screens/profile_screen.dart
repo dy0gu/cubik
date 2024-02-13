@@ -23,10 +23,15 @@ class ProfileScreen extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  FloatingActionButton(
-                    heroTag: null,
-                    child: const Icon(Icons.arrow_back),
-                    onPressed: () => context.go("/"),
+                  Tooltip(
+                    waitDuration: const Duration(seconds: 1),
+                    verticalOffset: 35,
+                    message: locale.back,
+                    child: FloatingActionButton(
+                      heroTag: null,
+                      child: const Icon(Icons.arrow_back),
+                      onPressed: () => context.go("/"),
+                    ),
                   ),
                 ],
               ),
@@ -65,11 +70,15 @@ class ProfileScreen extends StatelessWidget {
                       Positioned(
                         bottom: -10,
                         right: -10,
-                        child: ElevatedButton(
-                          onPressed: () => context
-                              .read<ProfileBloc>()
-                              .add(ProfilePictureUploaded()),
-                          child: const Icon(Icons.camera_alt),
+                        child: Tooltip(
+                          message: locale.picture,
+                          waitDuration: const Duration(seconds: 1),
+                          child: ElevatedButton(
+                            onPressed: () => context
+                                .read<ProfileBloc>()
+                                .add(ProfilePictureUploaded()),
+                            child: const Icon(Icons.camera_alt),
+                          ),
                         ),
                       ),
                     ],
@@ -77,23 +86,29 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   SizedBox(
                     width: 200,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
+                    child: Tooltip(
+                      message: locale.username,
+                      verticalOffset: 35,
+                      waitDuration: const Duration(seconds: 1),
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                         ),
+                        controller: TextEditingController.fromValue(
+                          TextEditingValue(
+                              text: profile.username,
+                              selection: TextSelection(
+                                baseOffset: profile.username.length,
+                                extentOffset: profile.username.length,
+                              )),
+                        ),
+                        onChanged: (value) => context
+                            .read<ProfileBloc>()
+                            .add(ProfileUsernameChanged(value)),
                       ),
-                      controller: TextEditingController.fromValue(
-                        TextEditingValue(
-                            text: profile.username,
-                            selection: TextSelection(
-                              baseOffset: profile.username.length,
-                              extentOffset: profile.username.length,
-                            )),
-                      ),
-                      onChanged: (value) => context
-                          .read<ProfileBloc>()
-                          .add(ProfileUsernameChanged(value)),
                     ),
                   ),
                 ],

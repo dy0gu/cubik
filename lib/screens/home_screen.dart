@@ -28,32 +28,60 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-                    FloatingActionButton(
-                        heroTag: null,
-                        child: const Icon(Icons.settings),
-                        onPressed: () => context.go("/settings")),
+                    Tooltip(
+                      waitDuration: const Duration(seconds: 1),
+                      verticalOffset: 35,
+                      message: locale.settings,
+                      child: FloatingActionButton(
+                          heroTag: null,
+                          child: const Icon(Icons.settings),
+                          onPressed: () => context.go("/settings")),
+                    ),
                     const SizedBox(width: 15),
-                    FloatingActionButton(
-                        heroTag: null,
-                        child: const Icon(Icons.info),
-                        onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                                  title: Text(locale.helpTitle),
-                                  content: Text(
-                                      "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
-                                  actionsAlignment: MainAxisAlignment.center,
-                                ))),
+                    Tooltip(
+                      waitDuration: const Duration(seconds: 1),
+                      verticalOffset: 35,
+                      message: locale.help,
+                      child: FloatingActionButton(
+                          heroTag: null,
+                          child: const Icon(Icons.info),
+                          onPressed: () => showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    title: Text(locale.helpTitle),
+                                    content: Text(
+                                        "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
+                                    actionsAlignment: MainAxisAlignment.center,
+                                    actions: [
+                                      Tooltip(
+                                        waitDuration:
+                                            const Duration(seconds: 1),
+                                        message: locale.back,
+                                        child: ElevatedButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: const Icon(
+                                              Icons.arrow_back,
+                                            )),
+                                      ),
+                                    ],
+                                  ))),
+                    ),
                   ],
                 ),
               ),
               const SizedBox(width: 15),
               Row(
                 children: [
-                  FloatingActionButton(
-                      heroTag: null,
-                      child: const Icon(Icons.person),
-                      onPressed: () => context.go("/profile")),
+                  Tooltip(
+                    waitDuration: const Duration(seconds: 1),
+                    verticalOffset: 35,
+                    message: locale.profile,
+                    child: FloatingActionButton(
+                        heroTag: null,
+                        child: const Icon(Icons.person),
+                        onPressed: () => context.go("/profile")),
+                  ),
                 ],
               ),
             ],
@@ -68,35 +96,38 @@ class HomeScreen extends StatelessWidget {
               child: BlocListener<GameBloc, Game>(
                 listener: (context, game) {
                   if (game.isOver()) {
+                    confettiControllerLeft.play();
+                    confettiControllerRight.play();
+
                     context
                         .read<StatisticsBloc>()
                         .add(StatisticsGameRecorded(moves: game.moves));
 
-                    confettiControllerLeft.play();
-                    confettiControllerRight.play();
-
                     Future.delayed(const Duration(milliseconds: 500), () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: const Duration(seconds: 8),
                         backgroundColor: theme.colorScheme.primaryContainer,
                         content: Text.rich(
                           TextSpan(
-                            text:
-                                "You won using ${game.moves} ${game.moves == 1 ? "move" : "moves"}!",
+                            text: locale.winPopup(game.moves),
                             style: theme.textTheme.bodyLarge,
                             children: [
                               const WidgetSpan(child: SizedBox(width: 5)),
                               WidgetSpan(
                                 alignment: PlaceholderAlignment.middle,
-                                child: SizedBox(
-                                  height: 35,
-                                  width: 40,
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(35),
-                                    onTap: () => Share.share(
-                                        subject:
-                                            "My most recent Cubik victory!",
-                                        "I won a game of Cubik using only ${game.moves} ${game.moves == 1 ? "move" : "moves"}! See if you can do better at cubik.win, or using the app."),
-                                    child: const Icon(Icons.share),
+                                child: Tooltip(
+                                  waitDuration: const Duration(seconds: 1),
+                                  message: locale.share,
+                                  child: SizedBox(
+                                    height: 35,
+                                    width: 40,
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(35),
+                                      onTap: () => Share.share(
+                                        locale.shareBody(game.moves),
+                                      ),
+                                      child: const Icon(Icons.share),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -163,47 +194,46 @@ class HomeScreen extends StatelessWidget {
                                             width: 270 / row.length,
                                             height: 270 / row.length,
                                           )
-                                        : GestureDetector(
-                                            onPanStart: (details) => context
-                                                .read<GameBloc>()
-                                                .add(GamePieceMoved(
-                                                    piece: piece)),
-                                            onTap: () => context
-                                                .read<GameBloc>()
-                                                .add(GamePieceMoved(
-                                                    piece: piece)),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: theme.colorScheme
-                                                    .primaryContainer,
-                                                border: Border.all(
-                                                  color: piece.isCorrect(
-                                                          game.boardSize)
-                                                      ? theme
-                                                          .colorScheme.primary
-                                                      : theme.colorScheme
-                                                          .background,
-                                                  width: piece.isCorrect(
-                                                          game.boardSize)
-                                                      ? 2
-                                                      : 0,
+                                        : Material(
+                                            color: theme
+                                                .colorScheme.primaryContainer,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              onTap: () => context
+                                                  .read<GameBloc>()
+                                                  .add(GamePieceMoved(
+                                                      piece: piece)),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: piece.isCorrect(
+                                                            game.boardSize)
+                                                        ? theme
+                                                            .colorScheme.primary
+                                                        : theme.colorScheme
+                                                            .background,
+                                                    width: piece.isCorrect(
+                                                            game.boardSize)
+                                                        ? 2
+                                                        : 0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          66 / row.length),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        66 / row.length),
-                                              ),
-                                              width: 270 / row.length,
-                                              height: 270 / row.length,
-                                              child: Center(
-                                                child: Text(
-                                                    piece.value.toString(),
-                                                    style: theme
-                                                        .textTheme.bodyMedium!
-                                                        .copyWith(
-                                                      fontSize: 270 /
-                                                          row.length /
-                                                          2.5,
-                                                    )),
+                                                width: 270 / row.length,
+                                                height: 270 / row.length,
+                                                child: Center(
+                                                  child: Text(
+                                                      piece.value.toString(),
+                                                      style: theme
+                                                          .textTheme.bodyMedium!
+                                                          .copyWith(
+                                                        fontSize: 270 /
+                                                            row.length /
+                                                            2.5,
+                                                      )),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -219,11 +249,24 @@ class HomeScreen extends StatelessWidget {
                           spacing: 30,
                           runSpacing: 15,
                           children: [
-                            ElevatedButton(
-                                onPressed: () => context
-                                    .read<GameBloc>()
-                                    .add(GameShuffled()),
-                                child: const Icon(Icons.shuffle)),
+                            Tooltip(
+                              waitDuration: const Duration(seconds: 1),
+                              message: locale.shuffle,
+                              child: ElevatedButton(
+                                  onPressed: () => context
+                                      .read<GameBloc>()
+                                      .add(GameShuffled()),
+                                  child: const Icon(Icons.shuffle)),
+                            ),
+                            Tooltip(
+                              waitDuration: const Duration(seconds: 1),
+                              message: locale.cheat,
+                              child: ElevatedButton(
+                                  onPressed: () => context
+                                      .read<GameBloc>()
+                                      .add(GameCheatActivated()),
+                                  child: const Icon(Icons.lightbulb)),
+                            ),
                           ],
                         ),
                       ],
