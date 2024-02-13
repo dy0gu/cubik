@@ -115,108 +115,111 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 600,
-                      height: 300,
+                      height: 250,
                       child: Stack(
                         children: [
-                          if (statistics.previousGameMoves.isEmpty)
+                          if (statistics.previousGameMoves.length < 2)
                             Center(
                               child: Text(
-                                "${locale.noDataYet}!",
+                                "${locale.notEnoughStatisticDataYet}!",
                                 style: theme.textTheme.bodyLarge,
                               ),
                             ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 45,
-                            ),
-                            child: LineChart(
-                              LineChartData(
-                                lineBarsData: [
-                                  LineChartBarData(
-                                    spots: statistics.previousGameMoves
-                                        .asMap()
-                                        .entries
-                                        .map((entry) {
-                                      return FlSpot(
-                                        entry.key.toDouble(),
-                                        entry.value.toDouble(),
-                                      );
-                                    }).toList(),
-                                    isCurved: true,
-                                    color: theme.colorScheme.primary,
-                                    curveSmoothness: 0.2,
-                                    barWidth: 3,
-                                    isStrokeCapRound: true,
-                                    belowBarData: BarAreaData(
-                                      show: true,
-                                      color: theme.colorScheme.primary
-                                          .withOpacity(0.3),
-                                    ),
-                                  ),
-                                ],
-                                lineTouchData: const LineTouchData(
-                                  touchTooltipData: LineTouchTooltipData(
-                                    tooltipBgColor: Colors.transparent,
+                          LineChart(
+                            LineChartData(
+                              lineBarsData: [
+                                LineChartBarData(
+                                  spots: statistics.previousGameMoves.length < 2
+                                      ? []
+                                      : statistics.previousGameMoves
+                                          .asMap()
+                                          .entries
+                                          .map((entry) {
+                                          return FlSpot(
+                                            entry.key.toDouble(),
+                                            entry.value.toDouble(),
+                                          );
+                                        }).toList(),
+                                  isCurved: false,
+                                  color: theme.colorScheme.primary,
+                                  curveSmoothness: 0.2,
+                                  barWidth: 3,
+                                  isStrokeCapRound: true,
+                                  belowBarData: BarAreaData(
+                                    show: true,
+                                    color: theme.colorScheme.primary
+                                        .withOpacity(0.3),
                                   ),
                                 ),
-                                gridData: FlGridData(
-                                  show: true,
-                                  getDrawingHorizontalLine: (value) {
-                                    return FlLine(
-                                      color: theme.colorScheme.primary
-                                          .withOpacity(0.4),
-                                      strokeWidth: 1,
-                                      dashArray: [5, 5],
-                                    );
-                                  },
-                                  getDrawingVerticalLine: (value) {
-                                    return FlLine(
-                                      color: theme.colorScheme.primary
-                                          .withOpacity(0.4),
-                                      strokeWidth: 1,
-                                      dashArray: [5, 5],
-                                    );
-                                  },
+                              ],
+                              lineTouchData: const LineTouchData(
+                                touchTooltipData: LineTouchTooltipData(
+                                  tooltipBgColor: Colors.transparent,
                                 ),
-                                titlesData: const FlTitlesData(
-                                  show: true,
-                                  topTitles: AxisTitles(
-                                      sideTitles:
-                                          SideTitles(showTitles: false)),
-                                  rightTitles: AxisTitles(
-                                      sideTitles:
-                                          SideTitles(showTitles: false)),
-                                  bottomTitles: AxisTitles(
+                              ),
+                              gridData: FlGridData(
+                                show: true,
+                                getDrawingHorizontalLine: (value) {
+                                  return FlLine(
+                                    color: theme.colorScheme.primary
+                                        .withOpacity(0.4),
+                                    strokeWidth: 1,
+                                    dashArray: [5, 5],
+                                  );
+                                },
+                                getDrawingVerticalLine: (value) {
+                                  return FlLine(
+                                    color: theme.colorScheme.primary
+                                        .withOpacity(0.4),
+                                    strokeWidth: 1,
+                                    dashArray: [5, 5],
+                                  );
+                                },
+                              ),
+                              titlesData: FlTitlesData(
+                                show: true,
+                                topTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                bottomTitles: const AxisTitles(
+                                  sideTitles: SideTitles(
+                                    showTitles: false,
+                                  ),
+                                ),
+                                rightTitles: AxisTitles(
                                     sideTitles: SideTitles(
-                                      showTitles: false,
-                                    ),
-                                  ),
-                                  leftTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: true,
-                                      reservedSize: 60,
-                                    ),
+                                        getTitlesWidget: (value, meta) =>
+                                            const SizedBox.shrink(),
+                                        showTitles: true,
+                                        reservedSize: 60)),
+                                leftTitles: AxisTitles(
+                                  sideTitles: SideTitles(
+                                    getTitlesWidget: (value, meta) =>
+                                        statistics.previousGameMoves.length < 2
+                                            ? const SizedBox.shrink()
+                                            : defaultGetTitle(value, meta),
+                                    showTitles: true,
+                                    reservedSize: 60,
                                   ),
                                 ),
-                                borderData: FlBorderData(
-                                  show: true,
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: theme.colorScheme.outline,
-                                      width: 1,
-                                    ),
-                                    left: BorderSide(
-                                      color: theme.colorScheme.outline,
-                                      width: 1,
-                                    ),
-                                    right: BorderSide(
-                                      color: theme.colorScheme.outline,
-                                      width: 1,
-                                    ),
-                                    top: BorderSide(
-                                      color: theme.colorScheme.outline,
-                                      width: 1,
-                                    ),
+                              ),
+                              borderData: FlBorderData(
+                                show: true,
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: theme.colorScheme.outline,
+                                    width: 1,
+                                  ),
+                                  left: BorderSide(
+                                    color: theme.colorScheme.outline,
+                                    width: 1,
+                                  ),
+                                  right: BorderSide(
+                                    color: theme.colorScheme.outline,
+                                    width: 1,
+                                  ),
+                                  top: BorderSide(
+                                    color: theme.colorScheme.outline,
+                                    width: 1,
                                   ),
                                 ),
                               ),
@@ -226,23 +229,24 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    Text.rich(
-                      TextSpan(
-                        text: "${locale.statisticMoves}  ",
-                        style: theme.textTheme.bodyLarge,
-                        children: const [
-                          WidgetSpan(
-                            child: SizedBox(
-                                height: 35,
-                                child: Icon(
-                                  Icons.move_down,
-                                )),
-                            alignment: PlaceholderAlignment.middle,
-                          ),
-                        ],
+                    if (statistics.previousGameMoves.length > 2)
+                      Text.rich(
+                        TextSpan(
+                          text: "${locale.statisticMoves}  ",
+                          style: theme.textTheme.bodyLarge,
+                          children: const [
+                            WidgetSpan(
+                              child: SizedBox(
+                                  height: 35,
+                                  child: Icon(
+                                    Icons.move_down,
+                                  )),
+                              alignment: PlaceholderAlignment.middle,
+                            ),
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
                   ],
                 ),
               ],
