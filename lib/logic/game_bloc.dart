@@ -16,8 +16,9 @@ class GamePiece extends Equatable {
   final int value;
   final GamePiecePosition position;
 
-  bool isCorrect(int size) {
-    return value == 0 || value == position.row * size + position.column + 1;
+  bool isCorrect(int boardSize) {
+    return value == 0 ||
+        value == position.row * boardSize + position.column + 1;
   }
 
   const GamePiece({required this.value, required this.position});
@@ -27,18 +28,21 @@ class GamePiece extends Equatable {
 }
 
 class Game extends Equatable {
-  final int size;
+  final int boardSize;
   final List<List<GamePiece>> pieces;
   final int moves;
 
   bool isOver() {
-    return pieces.expand((row) => row).every((piece) => piece.isCorrect(size));
+    return pieces
+        .expand((row) => row)
+        .every((piece) => piece.isCorrect(boardSize));
   }
 
-  const Game({required this.pieces, required this.size, required this.moves});
+  const Game(
+      {required this.pieces, required this.boardSize, required this.moves});
 
   @override
-  List<Object?> get props => [size, pieces, moves];
+  List<Object?> get props => [boardSize, pieces, moves];
 }
 
 sealed class GameEvent {}
@@ -58,20 +62,27 @@ class GameSizeDecreased extends GameEvent {}
 class GameCheatActivated extends GameEvent {}
 
 class GameBloc extends HydratedBloc<GameEvent, Game> {
-  GameBloc() : super(Game(pieces: generate(3), size: 3, moves: 0)) {
+  GameBloc() : super(Game(pieces: generate(3), boardSize: 3, moves: 0)) {
     on<GameShuffled>((event, emit) {
-      emit(Game(pieces: generate(state.size), size: state.size, moves: 0));
+      emit(Game(
+          pieces: generate(state.boardSize),
+          boardSize: state.boardSize,
+          moves: 0));
     });
     on<GameSizeIncreased>((event, emit) {
-      if (state.size < 5) {
+      if (state.boardSize < 5) {
         emit(Game(
-            pieces: generate(state.size + 1), size: state.size + 1, moves: 0));
+            pieces: generate(state.boardSize + 1),
+            boardSize: state.boardSize + 1,
+            moves: 0));
       }
     });
     on<GameSizeDecreased>((event, emit) {
-      if (state.size > 3) {
+      if (state.boardSize > 3) {
         emit(Game(
-            pieces: generate(state.size - 1), size: state.size - 1, moves: 0));
+            pieces: generate(state.boardSize - 1),
+            boardSize: state.boardSize - 1,
+            moves: 0));
       }
     });
     on<GamePieceMoved>((event, emit) {
@@ -96,22 +107,25 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
                         : current)
                 .toList())
             .toList();
-        emit(Game(pieces: newPieces, size: state.size, moves: state.moves + 1));
+        emit(Game(
+            pieces: newPieces,
+            boardSize: state.boardSize,
+            moves: state.moves + 1));
       }
     });
     on<GameCheatActivated>((event, emit) {
-      final correctPieces = List.generate(state.size, (i) {
-        return List.generate(state.size, (j) {
-          final value = i * state.size + j + 1;
+      final correctPieces = List.generate(state.boardSize, (i) {
+        return List.generate(state.boardSize, (j) {
+          final value = i * state.boardSize + j + 1;
           return GamePiece(
-              value: value == state.size * state.size ? 0 : value,
+              value: value == state.boardSize * state.boardSize ? 0 : value,
               position: GamePiecePosition(row: i, column: j));
         });
       });
 
       emit(Game(
           pieces: correctPieces,
-          size: state.size,
+          boardSize: state.boardSize,
           moves: Random.secure().nextInt(100) + 15));
     });
   }
@@ -120,7 +134,7 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
   Game fromJson(Map<String, dynamic> json) {
     if (json["pieces"] is List && json["size"] is int) {
       return Game(
-          size: json["size"] as int,
+          boardSize: json["size"] as int,
           pieces: (json["pieces"] as List)
               .map((row) => (row as List)
                   .map((piece) => GamePiece(
@@ -132,7 +146,7 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
               .toList(),
           moves: json["moves"] as int);
     } else {
-      return Game(pieces: generate(3), size: 3, moves: 0);
+      return Game(pieces: generate(3), boardSize: 3, moves: 0);
     }
   }
 
@@ -150,7 +164,7 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
                   })
               .toList())
           .toList(),
-      "size": state.size,
+      "size": state.boardSize,
       "moves": state.moves
     };
   }
