@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                               builder: (context) => AlertDialog(
                                     title: Text(locale.helpTitle),
                                     content: Text(
-                                        "${locale.helpBodyFirst}\n${locale.helpBodySecond}"),
+                                        "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [
                                       Tooltip(
