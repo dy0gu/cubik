@@ -135,9 +135,10 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           if (statistics.previousGameMoves.length < 2)
                             Padding(
-                              padding: const EdgeInsets.all(45),
+                              padding: const EdgeInsets.all(60),
                               child: Center(
                                 child: Text(
+                                  textAlign: TextAlign.center,
                                   locale.notEnoughStatisticDataYet,
                                   style: theme.textTheme.bodyLarge,
                                 ),
