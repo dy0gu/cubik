@@ -114,6 +114,9 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
       }
     });
     on<GameCheatActivated>((event, emit) {
+      if (state.isOver()) {
+        return;
+      }
       final correctPieces = List.generate(state.boardSize, (i) {
         return List.generate(state.boardSize, (j) {
           final value = i * state.boardSize + j + 1;
