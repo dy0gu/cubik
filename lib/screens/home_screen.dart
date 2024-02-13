@@ -128,6 +128,7 @@ class HomeScreen extends StatelessWidget {
                                     child: InkWell(
                                       borderRadius: BorderRadius.circular(35),
                                       onTap: () => Share.share(
+                                        subject: locale.shareBody(game.moves),
                                         locale.shareBody(game.moves),
                                       ),
                                       child: const Icon(Icons.share),
@@ -203,10 +204,11 @@ class HomeScreen extends StatelessWidget {
                                                 .colorScheme.primaryContainer,
                                             child: InkWell(
                                               splashColor: Colors.transparent,
-                                              onTap: () => context
-                                                  .read<GameBloc>()
-                                                  .add(GamePieceMoved(
-                                                      piece: piece)),
+                                              onTap: () {
+                                                context.read<GameBloc>().add(
+                                                    GamePieceMoved(
+                                                        piece: piece));
+                                              },
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
