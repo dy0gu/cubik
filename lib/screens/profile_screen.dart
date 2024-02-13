@@ -114,8 +114,8 @@ class ProfileScreen extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
-                      width: 500,
-                      height: 200,
+                      width: 600,
+                      height: 300,
                       child: Stack(
                         children: [
                           if (statistics.previousGameMoves.isEmpty)
@@ -125,74 +125,98 @@ class ProfileScreen extends StatelessWidget {
                                 style: theme.textTheme.bodyLarge,
                               ),
                             ),
-                          BarChart(
-                            BarChartData(
-                              barGroups: statistics.previousGameMoves
-                                  .asMap()
-                                  .entries
-                                  .map((entry) {
-                                return BarChartGroupData(
-                                  x: entry.key,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: entry.value.toDouble(),
-                                      color: theme.colorScheme.primary,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 45,
+                            ),
+                            child: LineChart(
+                              LineChartData(
+                                lineBarsData: [
+                                  LineChartBarData(
+                                    spots: statistics.previousGameMoves
+                                        .asMap()
+                                        .entries
+                                        .map((entry) {
+                                      return FlSpot(
+                                        entry.key.toDouble(),
+                                        entry.value.toDouble(),
+                                      );
+                                    }).toList(),
+                                    isCurved: true,
+                                    color: theme.colorScheme.primary,
+                                    curveSmoothness: 0.2,
+                                    barWidth: 3,
+                                    isStrokeCapRound: true,
+                                    belowBarData: BarAreaData(
+                                      show: true,
+                                      color: theme.colorScheme.primary
+                                          .withOpacity(0.3),
                                     ),
-                                  ],
-                                );
-                              }).toList(),
-                              barTouchData: BarTouchData(
-                                touchTooltipData: BarTouchTooltipData(
-                                  tooltipBgColor: Colors.transparent,
-                                ),
-                              ),
-                              gridData: FlGridData(
-                                show: false,
-                                getDrawingHorizontalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                                getDrawingVerticalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                              ),
-                              titlesData: const FlTitlesData(
-                                show: true,
-                                topTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                bottomTitles: AxisTitles(
-                                  sideTitles: SideTitles(
-                                    showTitles: false,
+                                  ),
+                                ],
+                                lineTouchData: const LineTouchData(
+                                  touchTooltipData: LineTouchTooltipData(
+                                    tooltipBgColor: Colors.transparent,
                                   ),
                                 ),
-                                leftTitles: AxisTitles(
-                                  sideTitles: SideTitles(
-                                    showTitles: true,
-                                    reservedSize: 60,
+                                gridData: FlGridData(
+                                  show: true,
+                                  getDrawingHorizontalLine: (value) {
+                                    return FlLine(
+                                      color: theme.colorScheme.primary
+                                          .withOpacity(0.4),
+                                      strokeWidth: 1,
+                                      dashArray: [5, 5],
+                                    );
+                                  },
+                                  getDrawingVerticalLine: (value) {
+                                    return FlLine(
+                                      color: theme.colorScheme.primary
+                                          .withOpacity(0.4),
+                                      strokeWidth: 1,
+                                      dashArray: [5, 5],
+                                    );
+                                  },
+                                ),
+                                titlesData: const FlTitlesData(
+                                  show: true,
+                                  topTitles: AxisTitles(
+                                      sideTitles:
+                                          SideTitles(showTitles: false)),
+                                  rightTitles: AxisTitles(
+                                      sideTitles:
+                                          SideTitles(showTitles: false)),
+                                  bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: false,
+                                    ),
+                                  ),
+                                  leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      reservedSize: 60,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              borderData: FlBorderData(
-                                show: true,
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  left: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
+                                borderData: FlBorderData(
+                                  show: true,
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: theme.colorScheme.outline,
+                                      width: 1,
+                                    ),
+                                    left: BorderSide(
+                                      color: theme.colorScheme.outline,
+                                      width: 1,
+                                    ),
+                                    right: BorderSide(
+                                      color: theme.colorScheme.outline,
+                                      width: 1,
+                                    ),
+                                    top: BorderSide(
+                                      color: theme.colorScheme.outline,
+                                      width: 1,
+                                    ),
                                   ),
                                 ),
                               ),
