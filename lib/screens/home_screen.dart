@@ -1,4 +1,5 @@
 import "package:confetti/confetti.dart";
+import "package:cubik/logic/profile_bloc.dart";
 import "package:cubik/logic/stats_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -103,6 +104,8 @@ class HomeScreen extends StatelessWidget {
                         .read<StatisticsBloc>()
                         .add(StatisticsGameRecorded(moves: game.moves));
 
+                    // Hide current snackbar if any is visible
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     Future.delayed(const Duration(milliseconds: 500), () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         duration: const Duration(seconds: 8),
@@ -245,9 +248,9 @@ class HomeScreen extends StatelessWidget {
                         }).toList()),
                         const SizedBox(height: 30),
                         Wrap(
-                          alignment: WrapAlignment.center,
                           spacing: 30,
                           runSpacing: 15,
+                          alignment: WrapAlignment.center,
                           children: [
                             Tooltip(
                               waitDuration: const Duration(seconds: 1),
@@ -258,14 +261,24 @@ class HomeScreen extends StatelessWidget {
                                       .add(GameShuffled()),
                                   child: const Icon(Icons.shuffle)),
                             ),
-                            Tooltip(
-                              waitDuration: const Duration(seconds: 1),
-                              message: locale.cheat,
-                              child: ElevatedButton(
-                                  onPressed: () => context
-                                      .read<GameBloc>()
-                                      .add(GameCheatActivated()),
-                                  child: const Icon(Icons.lightbulb)),
+                            BlocProvider(
+                              lazy: false,
+                              create: (context) => ProfileBloc(),
+                              child: BlocBuilder<ProfileBloc, Profile>(
+                                builder: (context, profile) => Visibility(
+                                  replacement: Container(),
+                                  visible: profile.isCheater(),
+                                  child: Tooltip(
+                                    waitDuration: const Duration(seconds: 1),
+                                    message: locale.cheat,
+                                    child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<GameBloc>()
+                                            .add(GameCheatActivated()),
+                                        child: const Icon(Icons.lightbulb)),
+                                  ),
+                                ),
+                              ),
                             ),
                           ],
                         ),

@@ -13,6 +13,10 @@ class Profile extends Equatable {
     this.base64Image = "",
   });
 
+  bool isCheater() {
+    return username == "4815162342";
+  }
+
   @override
   List<Object?> get props => [username, base64Image];
 }
