@@ -136,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                           if (statistics.previousGameMoves.length < 2)
                             Center(
                               child: Text(
-                                "${locale.notEnoughStatisticDataYet}!",
+                                locale.notEnoughStatisticDataYet,
                                 style: theme.textTheme.bodyLarge,
                               ),
                             ),
