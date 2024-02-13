@@ -1,3 +1,4 @@
+import "package:cubik/logic/audio_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:cubik/utils.dart";
@@ -19,42 +20,53 @@ class App extends StatelessWidget {
           lazy: false,
           create: (context) => SettingsBloc(),
         ),
+        BlocProvider(
+          lazy: false,
+          create: (context) => AudioBloc(),
+        ),
       ],
-      child: BlocBuilder<SettingsBloc, Settings>(
-        builder: (context, settings) {
-          // Sets the app to completely render under the status/navigation bar on mobile devices
-          // Use "immersiveSticky" instead of "edgeToEdge" for fullscreen and status/navigation bar hiding
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then(
-            (_) => SystemChrome.setSystemUIOverlayStyle(
-              SystemUiOverlayStyle(
-                // Set the status bar and navigation bar to transparent on Android (Colors.transparent does not work)
-                // On iOS they are already transparent by default
-                systemNavigationBarColor: const Color(0x01010100),
-                statusBarColor: const Color(0x01010100),
-                // Change the color of the status bar and navigation bar icons on Android depending on the theme mode
-                // This is needed because if they match the background color, they will be invisible
-                systemNavigationBarIconBrightness:
-                    settings.themeMode.toBrightness(context).inverted(),
-                statusBarIconBrightness:
-                    settings.themeMode.toBrightness(context).inverted(),
-                // Change the color of the status bar and navigation bar icons on IOS, same reason as above
-                statusBarBrightness: settings.themeMode.toBrightness(context),
+      child: BlocBuilder<SettingsBloc, Settings>(builder: (context, settings) {
+        return BlocBuilder<AudioBloc, Audio>(
+          builder: (context, audio) {
+            // Initializes the audio players (music and effects)
+            context.read<AudioBloc>().add(AudioInitialized(
+                  musicVolume: settings.musicVolume,
+                  sfxVolume: settings.sfxVolume,
+                ));
+            // Sets the app to completely render under the status/navigation bar on mobile devices
+            // Use "immersiveSticky" instead of "edgeToEdge" for fullscreen and status/navigation bar hiding
+            SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then(
+              (_) => SystemChrome.setSystemUIOverlayStyle(
+                SystemUiOverlayStyle(
+                  // Set the status bar and navigation bar to transparent on Android (Colors.transparent does not work)
+                  // On iOS they are already transparent by default
+                  systemNavigationBarColor: const Color(0x01010100),
+                  statusBarColor: const Color(0x01010100),
+                  // Change the color of the status bar and navigation bar icons on Android depending on the theme mode
+                  // This is needed because if they match the background color, they will be invisible
+                  systemNavigationBarIconBrightness:
+                      settings.themeMode.toBrightness(context).inverted(),
+                  statusBarIconBrightness:
+                      settings.themeMode.toBrightness(context).inverted(),
+                  // Change the color of the status bar and navigation bar icons on IOS, same reason as above
+                  statusBarBrightness: settings.themeMode.toBrightness(context),
+                ),
               ),
-            ),
-          );
-          return MaterialApp.router(
-            title: "Cubik",
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
-            themeMode: settings.themeMode,
-            routerConfig: routerConfig,
-            locale: settings.locale,
-            supportedLocales: AppLocalizations.supportedLocales,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            debugShowCheckedModeBanner: false,
-          );
-        },
-      ),
+            );
+            return MaterialApp.router(
+              title: "Cubik",
+              theme: ThemeData.light(),
+              darkTheme: ThemeData.dark(),
+              themeMode: settings.themeMode,
+              routerConfig: routerConfig,
+              locale: settings.locale,
+              supportedLocales: AppLocalizations.supportedLocales,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              debugShowCheckedModeBanner: false,
+            );
+          },
+        );
+      }),
     );
   }
 }

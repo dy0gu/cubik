@@ -14,26 +14,23 @@ class Audio extends Equatable {
 
 sealed class AudioEvent {}
 
-class AudioBloc extends HydratedBloc<AudioEvent, Audio> {
+class AudioInitialized extends AudioEvent {
+  final double musicVolume;
+  final double sfxVolume;
+
+  AudioInitialized({required this.musicVolume, required this.sfxVolume});
+}
+
+class AudioEffectPlayed extends AudioEvent {}
+
+class AudioBloc extends Bloc<AudioEvent, Audio> {
   AudioBloc()
       : super(Audio(
           musicPlayer: AudioPlayer(),
           sfxPlayer: AudioPlayer(),
-        ));
+        )) {
+    on<AudioInitialized>((event, emit) async {});
 
-  @override
-  Audio fromJson(Map<String, dynamic> json) {
-    return Audio(
-      musicPlayer: AudioPlayer(),
-      sfxPlayer: AudioPlayer(),
-    );
-  }
-
-  @override
-  Map<String, dynamic> toJson(Audio state) {
-    return {
-      "musicPlayer": state.musicPlayer,
-      "sfxPlayer": state.sfxPlayer,
-    };
+    on<AudioEffectPlayed>((event, emit) async {});
   }
 }
