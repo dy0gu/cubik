@@ -100,9 +100,8 @@ class HomeScreen extends StatelessWidget {
                     confettiControllerLeft.play();
                     confettiControllerRight.play();
 
-                    context
-                        .read<StatisticsBloc>()
-                        .add(StatisticsGameRecorded(moves: game.moves));
+                    context.read<StatisticsBloc>().add(StatisticsGameRecorded(
+                        boardSize: game.boardSize, moves: game.moves));
 
                     // Hide current snackbar if any is visible
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();

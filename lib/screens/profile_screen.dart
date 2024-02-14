@@ -133,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                       height: 250,
                       child: Stack(
                         children: [
-                          if (statistics.previousGameMoves.length < 2)
+                          if (statistics.entries.length < 2)
                             Padding(
                               padding: const EdgeInsets.all(60),
                               child: Center(
@@ -148,17 +148,15 @@ class ProfileScreen extends StatelessWidget {
                             LineChartData(
                               lineBarsData: [
                                 LineChartBarData(
-                                  spots: statistics.previousGameMoves.length < 2
+                                  spots: statistics.entries.length < 2
                                       ? []
-                                      : statistics.previousGameMoves
+                                      : statistics.entries
                                           .asMap()
                                           .entries
-                                          .map((entry) {
-                                          return FlSpot(
-                                            entry.key.toDouble(),
-                                            entry.value.toDouble(),
-                                          );
-                                        }).toList(),
+                                          .map((entry) => FlSpot(
+                                              entry.key.toDouble(),
+                                              entry.value.moves.toDouble()))
+                                          .toList(),
                                   isCurved: false,
                                   color: theme.colorScheme.primary,
                                   curveSmoothness: 0.2,
@@ -213,7 +211,7 @@ class ProfileScreen extends StatelessWidget {
                                 leftTitles: AxisTitles(
                                   sideTitles: SideTitles(
                                     getTitlesWidget: (value, meta) =>
-                                        statistics.previousGameMoves.length < 2
+                                        statistics.entries.length < 2
                                             ? const SizedBox.shrink()
                                             : defaultGetTitle(value, meta),
                                     showTitles: true,
@@ -248,7 +246,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    if (statistics.previousGameMoves.length > 2)
+                    if (statistics.entries.length > 2)
                       Text.rich(
                         TextSpan(
                           text: "${locale.statisticMoves}  ",
