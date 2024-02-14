@@ -201,43 +201,50 @@ class HomeScreen extends StatelessWidget {
                                         : Material(
                                             color: theme
                                                 .colorScheme.primaryContainer,
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              onTap: () {
+                                            child: GestureDetector(
+                                              onPanEnd: (details) {
                                                 context.read<GameBloc>().add(
                                                     GamePieceMoved(
                                                         piece: piece));
                                               },
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                    color: piece.isCorrect(
-                                                            game.boardSize)
-                                                        ? theme
-                                                            .colorScheme.primary
-                                                        : theme.colorScheme
-                                                            .background,
-                                                    width: piece.isCorrect(
-                                                            game.boardSize)
-                                                        ? 2
-                                                        : 0,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                onTap: () {
+                                                  context.read<GameBloc>().add(
+                                                      GamePieceMoved(
+                                                          piece: piece));
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color: piece.isCorrect(
+                                                              game.boardSize)
+                                                          ? theme.colorScheme
+                                                              .primary
+                                                          : theme.colorScheme
+                                                              .background,
+                                                      width: piece.isCorrect(
+                                                              game.boardSize)
+                                                          ? 2
+                                                          : 0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            66 / row.length),
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          66 / row.length),
-                                                ),
-                                                width: 270 / row.length,
-                                                height: 270 / row.length,
-                                                child: Center(
-                                                  child: Text(
-                                                      piece.value.toString(),
-                                                      style: theme
-                                                          .textTheme.bodyMedium!
-                                                          .copyWith(
-                                                        fontSize: 270 /
-                                                            row.length /
-                                                            2.5,
-                                                      )),
+                                                  width: 270 / row.length,
+                                                  height: 270 / row.length,
+                                                  child: Center(
+                                                    child: Text(
+                                                        piece.value.toString(),
+                                                        style: theme.textTheme
+                                                            .bodyMedium!
+                                                            .copyWith(
+                                                          fontSize: 270 /
+                                                              row.length /
+                                                              2.5,
+                                                        )),
+                                                  ),
                                                 ),
                                               ),
                                             ),
