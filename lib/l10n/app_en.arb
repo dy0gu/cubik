@@ -55,7 +55,9 @@
   "pageNotFound": "We couldn't find this page, maybe you shouldn't be here...",
   "pageError": "There was an error while loading this page, please try again later!",
   "localDataWarning": "All app data is stored locally, switching devices or clearing the app cache will delete it!",
-  "statisticMoves": "Moves taken per game",
+  "statisticMovesTaken": "Moves taken per game",
+  "statisticGamesPlayed": "Games played per day",
+  "statisticBoardSizesPlayed": "Board sizes played per game",
   "seedCopied": "Seed copied to clipboard!",
   "notEnoughStatisticDataYet":  "Not enough statistic data yet!"
 }
