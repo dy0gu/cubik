@@ -16,8 +16,19 @@ class Framed extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: SingleChildScrollView(child: child),
+          padding: const EdgeInsets.only(
+            top: 15,
+            bottom: 15,
+          ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 15,
+                right: 15,
+              ),
+              child: child,
+            ),
+          ),
         ),
       ),
     );
