@@ -1,12 +1,12 @@
 import "package:hydrated_bloc/hydrated_bloc.dart";
 import "package:equatable/equatable.dart";
 
-class GameEntry extends Equatable {
+class StatisticEntry extends Equatable {
   final DateTime date;
   final int boardSize;
   final int moves;
 
-  const GameEntry(
+  const StatisticEntry(
       {required this.date, required this.boardSize, required this.moves});
 
   @override
@@ -14,9 +14,9 @@ class GameEntry extends Equatable {
 }
 
 class Statistics extends Equatable {
-  final List<GameEntry> entries;
+  final List<StatisticEntry> entries;
 
-  const Statistics({this.entries = const <GameEntry>[]});
+  const Statistics({this.entries = const <StatisticEntry>[]});
 
   @override
   List<Object> get props => [entries];
@@ -38,7 +38,7 @@ class StatisticsBloc extends HydratedBloc<StatisticsEvent, Statistics> {
       final entries = state.entries.length >= 1000
           ? state.entries.sublist(1)
           : state.entries;
-      entries.add(GameEntry(
+      entries.add(StatisticEntry(
           date: DateTime.now(),
           boardSize: event.boardSize,
           moves: event.moves));
@@ -50,7 +50,7 @@ class StatisticsBloc extends HydratedBloc<StatisticsEvent, Statistics> {
   Statistics fromJson(Map<String, dynamic> json) => json["entries"] is List
       ? Statistics(
           entries: (json["entries"] as List)
-              .map((entry) => GameEntry(
+              .map((entry) => StatisticEntry(
                   date: DateTime.parse(entry["date"]),
                   boardSize: entry["boardSize"],
                   moves: entry["moves"]))
