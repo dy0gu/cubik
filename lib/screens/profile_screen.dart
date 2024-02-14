@@ -147,14 +147,17 @@ class ProfileScreen extends StatelessWidget {
                           LineChart(
                             LineChartData(
                               minY: 0,
-                              maxY: (statistics.entries
-                                              .map((entry) => entry.moves)
-                                              .reduce((a, b) => a > b ? a : b)
-                                              .toDouble() *
-                                          1.5 /
-                                          10)
-                                      .ceil() *
-                                  10,
+                              maxY: statistics.entries.length < 2
+                                  ? null
+                                  : (statistics.entries
+                                                  .map((entry) => entry.moves)
+                                                  .reduce(
+                                                      (a, b) => a > b ? a : b)
+                                                  .toDouble() *
+                                              1.5 /
+                                              10)
+                                          .ceil() *
+                                      10,
                               lineBarsData: [
                                 LineChartBarData(
                                   spots: statistics.entries.length < 2
