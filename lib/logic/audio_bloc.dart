@@ -21,6 +21,18 @@ class AudioInitialized extends AudioEvent {
   AudioInitialized({required this.musicVolume, required this.sfxVolume});
 }
 
+class AudioMusicVolumeChanged extends AudioEvent {
+  final double volume;
+
+  AudioMusicVolumeChanged({required this.volume});
+}
+
+class AudioSfxVolumeChanged extends AudioEvent {
+  final double volume;
+
+  AudioSfxVolumeChanged({required this.volume});
+}
+
 class AudioEffectPlayed extends AudioEvent {}
 
 class AudioBloc extends Bloc<AudioEvent, Audio> {
@@ -32,5 +44,9 @@ class AudioBloc extends Bloc<AudioEvent, Audio> {
     on<AudioInitialized>((event, emit) async {});
 
     on<AudioEffectPlayed>((event, emit) async {});
+
+    on<AudioMusicVolumeChanged>((event, emit) async {});
+
+    on<AudioSfxVolumeChanged>((event, emit) async {});
   }
 }
