@@ -1,6 +1,6 @@
 # It's harder than it looks! 👀⚔️
 
-![logo](assets/images/logo.png)
+![logo](assets/images/logo_256.png)
 
 Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the numbers in ascending order by moving the pieces through the empty space. It seeks to expand on the original concept by using varying board sizes and statistics tracking.
 
