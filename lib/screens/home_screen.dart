@@ -169,17 +169,17 @@ class HomeScreen extends StatelessWidget {
                             children: row.map((piece) {
                               return Padding(
                                 padding: const EdgeInsets.all(2),
-                                child: Material(
-                                  elevation: 6,
-                                  borderRadius:
-                                      BorderRadius.circular(66 / row.length),
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: theme.colorScheme.background,
-                                  surfaceTintColor: Colors.transparent,
-                                  type: MaterialType.card,
-                                  child: Animate(
-                                    value: -piece.value.toDouble().abs(),
-                                    effects: const [ShakeEffect()],
+                                child: Animate(
+                                  value: -piece.value.toDouble().abs(),
+                                  effects: const [ShakeEffect()],
+                                  child: Material(
+                                    elevation: 6,
+                                    borderRadius:
+                                        BorderRadius.circular(66 / row.length),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: theme.colorScheme.background,
+                                    surfaceTintColor: Colors.transparent,
+                                    type: MaterialType.card,
                                     child: piece.value == 0
                                         ? Container(
                                             decoration: BoxDecoration(
