@@ -47,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                           heroTag: null,
                           child: const Icon(Icons.info),
                           onPressed: () => showDialog(
+                              barrierDismissible: false,
                               context: context,
                               builder: (context) => AlertDialog(
                                     title: Text(locale.helpTitle),
