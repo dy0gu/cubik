@@ -264,12 +264,14 @@ class ProfileScreen extends StatelessWidget {
                         TextSpan(
                           text: "${locale.statisticMovesTaken}  ",
                           style: theme.textTheme.bodyLarge,
-                          children: const [
+                          children: [
                             WidgetSpan(
                               child: SizedBox(
                                   height: 35,
                                   child: Icon(
                                     Icons.move_down,
+                                    color: theme.colorScheme.onBackground
+                                        .withOpacity(0.9),
                                   )),
                               alignment: PlaceholderAlignment.middle,
                             ),
@@ -418,12 +420,14 @@ class ProfileScreen extends StatelessWidget {
                         TextSpan(
                           text: "${locale.statisticBoardSizesPlayed}  ",
                           style: theme.textTheme.bodyLarge,
-                          children: const [
+                          children: [
                             WidgetSpan(
                               child: SizedBox(
                                   height: 35,
                                   child: Icon(
                                     Icons.aspect_ratio,
+                                    color: theme.colorScheme.onBackground
+                                        .withOpacity(0.9),
                                   )),
                               alignment: PlaceholderAlignment.middle,
                             ),
@@ -588,12 +592,14 @@ class ProfileScreen extends StatelessWidget {
                         TextSpan(
                           text: "${locale.statisticGamesPlayed}  ",
                           style: theme.textTheme.bodyLarge,
-                          children: const [
+                          children: [
                             WidgetSpan(
                               child: SizedBox(
                                   height: 35,
                                   child: Icon(
                                     Icons.calendar_today,
+                                    color: theme.colorScheme.onBackground
+                                        .withOpacity(0.9),
                                   )),
                               alignment: PlaceholderAlignment.middle,
                             ),
