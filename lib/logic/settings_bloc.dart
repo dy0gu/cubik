@@ -73,23 +73,15 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
   }
 
   @override
-  Settings fromJson(Map<String, dynamic> json) => (json["theme_mode"] is int &&
-          (json["locale_language_code"] is String ||
-              json["locale_language_code"] == null) &&
-          (json["locale_country_code"] is String ||
-              json["locale_country_code"] == null) &&
-          json["music_volume"] is double &&
-          json["sfx_volume"] is double)
-      ? Settings(
-          themeMode: ThemeMode.values[json["theme_mode"]],
-          locale: Locale(
-            json["locale_language_code"],
-            json["locale_country_code"],
-          ),
-          musicVolume: json["music_volume"],
-          sfxVolume: json["sfx_volume"],
-        )
-      : const Settings();
+  Settings fromJson(Map<String, dynamic> json) => Settings(
+        themeMode: ThemeMode.values[json["theme_mode"]],
+        locale: Locale(
+          json["locale_language_code"],
+          json["locale_country_code"],
+        ),
+        musicVolume: json["music_volume"],
+        sfxVolume: json["sfx_volume"],
+      );
 
   @override
   Map<String, dynamic> toJson(Settings state) => <String, dynamic>{
