@@ -4,6 +4,7 @@ import "package:go_router/go_router.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:cubik/logic/settings_bloc.dart";
 import "package:cubik/widgets/framed.dart";
+import "package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -11,6 +12,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations locale = AppLocalizations.of(context)!;
+    ThemeData theme = Theme.of(context);
     return Framed(
         child: Column(children: [
       Row(
@@ -37,41 +39,110 @@ class SettingsScreen extends StatelessWidget {
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Tooltip(
-            waitDuration: const Duration(seconds: 1),
-            verticalOffset: 35,
-            message: locale.theme,
-            child: DropdownMenu<ThemeMode>(
-              inputDecorationTheme: InputDecorationTheme(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(22),
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            alignment: WrapAlignment.center,
+            spacing: 15,
+            runSpacing: 15,
+            children: [
+              Tooltip(
+                waitDuration: const Duration(seconds: 1),
+                verticalOffset: 35,
+                message: locale.theme,
+                child: DropdownMenu<ThemeMode>(
+                  inputDecorationTheme: InputDecorationTheme(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(22),
+                    ),
+                  ),
+                  leadingIcon: const Icon(Icons.color_lens),
+                  requestFocusOnTap: false,
+                  initialSelection:
+                      context.watch<SettingsBloc>().state.themeMode,
+                  onSelected: (ThemeMode? value) {
+                    if (value != null) {
+                      context
+                          .read<SettingsBloc>()
+                          .add(SettingsThemeModeSelected(value));
+                      // Hide current snackbar since theme change does not affect existing
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    }
+                  },
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry<ThemeMode>(
+                        value: ThemeMode.system, label: locale.system),
+                    DropdownMenuEntry<ThemeMode>(
+                      value: ThemeMode.light,
+                      label: locale.light,
+                    ),
+                    DropdownMenuEntry<ThemeMode>(
+                      value: ThemeMode.dark,
+                      label: locale.dark,
+                    ),
+                  ],
                 ),
               ),
-              leadingIcon: const Icon(Icons.color_lens),
-              requestFocusOnTap: false,
-              initialSelection: context.watch<SettingsBloc>().state.themeMode,
-              onSelected: (ThemeMode? value) {
-                if (value != null) {
-                  context
-                      .read<SettingsBloc>()
-                      .add(SettingsThemeModeSelected(value));
-                  // Hide current snackbar since theme change does not affect existing
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                }
-              },
-              dropdownMenuEntries: [
-                DropdownMenuEntry<ThemeMode>(
-                    value: ThemeMode.system, label: locale.system),
-                DropdownMenuEntry<ThemeMode>(
-                  value: ThemeMode.light,
-                  label: locale.light,
+              Tooltip(
+                waitDuration: const Duration(seconds: 1),
+                message: locale.color,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(30),
+                  onTap: () {
+                    showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              content: SizedBox(
+                                height: MediaQuery.of(context).size.height / 2,
+                                width: MediaQuery.of(context).size.width / 4,
+                                child: WheelPicker(
+                                  color: HSVColor.fromColor(context
+                                      .watch<SettingsBloc>()
+                                      .state
+                                      .themeSeed),
+                                  onChanged: (value) {
+                                    context.read<SettingsBloc>().add(
+                                        SettingsThemeSeedChanged(
+                                            value.toColor()));
+                                  },
+                                ),
+                              ),
+                              actionsAlignment: MainAxisAlignment.center,
+                              actions: [
+                                Tooltip(
+                                  waitDuration: const Duration(seconds: 1),
+                                  message: locale.back,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Icon(Icons.arrow_back),
+                                  ),
+                                ),
+                              ],
+                            ));
+                  },
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: theme.colorScheme.outline,
+                        width: 1,
+                      ),
+                      color: theme.colorScheme.primaryContainer,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.colorize,
+                        color: theme.colorScheme.onBackground.withOpacity(0.9),
+                      ),
+                    ),
+                  ),
                 ),
-                DropdownMenuEntry<ThemeMode>(
-                  value: ThemeMode.dark,
-                  label: locale.dark,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           const SizedBox(height: 30),
           Tooltip(
@@ -163,7 +234,8 @@ class SettingsScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.music_note),
+                Icon(Icons.music_note,
+                    color: theme.colorScheme.onBackground.withOpacity(0.8)),
                 Slider(
                   value: context.watch<SettingsBloc>().state.musicVolume,
                   onChanged: (value) {
@@ -182,7 +254,8 @@ class SettingsScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.volume_up),
+                Icon(Icons.volume_up,
+                    color: theme.colorScheme.onBackground.withOpacity(0.8)),
                 Slider(
                   value: context.watch<SettingsBloc>().state.sfxVolume,
                   onChanged: (value) {

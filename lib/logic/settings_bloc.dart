@@ -7,16 +7,19 @@ class Settings extends Equatable {
   final Locale? locale;
   final double musicVolume;
   final double sfxVolume;
+  final Color themeSeed;
 
   const Settings({
     this.themeMode = ThemeMode.system,
     this.locale,
     this.musicVolume = 0.2,
     this.sfxVolume = 0.3,
+    this.themeSeed = const Color(0x00CD4F57),
   });
 
   @override
-  List<Object?> get props => [themeMode, locale, musicVolume, sfxVolume];
+  List<Object?> get props =>
+      [themeMode, locale, musicVolume, sfxVolume, themeSeed];
 }
 
 sealed class SettingsEvent {}
@@ -47,6 +50,12 @@ final class SettingsSfxVolumeChanged extends SettingsEvent {
   SettingsSfxVolumeChanged(this.sfxVolume);
 }
 
+final class SettingsThemeSeedChanged extends SettingsEvent {
+  final Color themeSeed;
+
+  SettingsThemeSeedChanged(this.themeSeed);
+}
+
 class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
   SettingsBloc() : super(const Settings()) {
     on<SettingsReset>((event, emit) => emit(const Settings()));
@@ -54,22 +63,33 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
         themeMode: event.themeMode,
         locale: state.locale,
         musicVolume: state.musicVolume,
-        sfxVolume: state.sfxVolume)));
+        sfxVolume: state.sfxVolume,
+        themeSeed: state.themeSeed)));
     on<SettingsLocaleSelected>((event, emit) => emit(Settings(
         themeMode: state.themeMode,
         locale: event.locale,
         musicVolume: state.musicVolume,
-        sfxVolume: state.sfxVolume)));
+        sfxVolume: state.sfxVolume,
+        themeSeed: state.themeSeed)));
     on<SettingsMusicVolumeChanged>((event, emit) => emit(Settings(
         themeMode: state.themeMode,
         locale: state.locale,
         musicVolume: event.musicVolume,
-        sfxVolume: state.sfxVolume)));
+        sfxVolume: state.sfxVolume,
+        themeSeed: state.themeSeed)));
     on<SettingsSfxVolumeChanged>((event, emit) => emit(Settings(
         themeMode: state.themeMode,
         locale: state.locale,
         musicVolume: state.musicVolume,
-        sfxVolume: event.sfxVolume)));
+        sfxVolume: event.sfxVolume,
+        themeSeed: state.themeSeed)));
+
+    on<SettingsThemeSeedChanged>((event, emit) => emit(Settings(
+        themeMode: state.themeMode,
+        locale: state.locale,
+        musicVolume: state.musicVolume,
+        sfxVolume: state.sfxVolume,
+        themeSeed: event.themeSeed)));
   }
 
   @override
@@ -81,6 +101,7 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
             : null,
         musicVolume: json["music_volume"],
         sfxVolume: json["sfx_volume"],
+        themeSeed: Color(json["theme_seed"]),
       );
 
   @override
@@ -90,5 +111,6 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
         "locale_country_code": state.locale?.countryCode,
         "music_volume": state.musicVolume,
         "sfx_volume": state.sfxVolume,
+        "theme_seed": state.themeSeed.value,
       };
 }
