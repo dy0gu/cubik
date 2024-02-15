@@ -13,19 +13,18 @@ class Framed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController vertical = ScrollController();
+
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 15,
-            bottom: 15,
-          ),
+        child: Scrollbar(
+          controller: vertical,
+          thumbVisibility: true,
           child: SingleChildScrollView(
+            controller: vertical,
+            scrollDirection: Axis.vertical,
             child: Padding(
-              padding: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-              ),
+              padding: const EdgeInsets.all(15),
               child: child,
             ),
           ),

@@ -55,15 +55,14 @@ class App extends StatelessWidget {
             );
             return MaterialApp.router(
               title: "Cubik",
-              theme: ThemeData.light().copyWith(
-                scrollbarTheme: ScrollbarThemeData(
-                  thumbVisibility: MaterialStateProperty.all(true),
-                ),
+              theme: ThemeData.from(
+                colorScheme: ColorScheme.fromSeed(
+                    seedColor: settings.themeSeed,
+                    brightness: Brightness.light),
               ),
-              darkTheme: ThemeData.dark().copyWith(
-                scrollbarTheme: ScrollbarThemeData(
-                  thumbVisibility: MaterialStateProperty.all(true),
-                ),
+              darkTheme: ThemeData.from(
+                colorScheme: ColorScheme.fromSeed(
+                    seedColor: settings.themeSeed, brightness: Brightness.dark),
               ),
               themeMode: settings.themeMode,
               routerConfig: routerConfig,
