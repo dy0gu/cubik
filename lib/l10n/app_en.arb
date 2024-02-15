@@ -35,6 +35,8 @@
   "shuffle": "Shuffle",
   "cheat": "Cheat",
   "back": "Back",
+  "apply": "Apply",
+  "color": "Color",
   "theme": "Theme",
   "language": "Language",
   "music": "Music",
@@ -57,7 +59,7 @@
   "localDataWarning": "All app data is stored locally, switching devices or clearing the app cache will delete it!",
   "statisticMovesTaken": "Moves taken per game",
   "statisticGamesPlayed": "Games played per day",
-  "statisticBoardSizesPlayed": "Board sizes played per game",
+  "statisticBoardSizesPlayed": "Board size per game",
   "seedCopied": "Seed copied to clipboard!",
   "notEnoughStatisticDataYet":  "Not enough statistic data yet!"
 }
