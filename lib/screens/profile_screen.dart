@@ -122,495 +122,296 @@ class ProfileScreen extends StatelessWidget {
           create: (context) => StatisticsBloc(),
           child: BlocBuilder<StatisticsBloc, Statistics>(
               builder: (context, statistics) {
-            return Wrap(
-              spacing: 60,
-              runSpacing: 60,
-              children: [
-                // Moves taken per game chart
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 600,
-                      height: 250,
-                      child: Stack(
+            return statistics.entries.isEmpty
+                ? Text(
+                    textAlign: TextAlign.center,
+                    locale.notEnoughStatisticDataYet,
+                    style: theme.textTheme.bodyLarge,
+                  )
+                : Wrap(
+                    spacing: 60,
+                    runSpacing: 60,
+                    children: [
+                      // Moves taken per game chart
+                      Column(
                         children: [
-                          if (statistics.entries.length < 2)
-                            Padding(
-                              padding: const EdgeInsets.all(60),
-                              child: Center(
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  locale.notEnoughStatisticDataYet,
-                                  style: theme.textTheme.bodyLarge,
-                                ),
-                              ),
-                            ),
-                          LineChart(
-                            LineChartData(
-                              minY: 0,
-                              maxY: statistics.entries.length < 2
-                                  ? null
-                                  : (statistics.entries
-                                                  .map((entry) => entry.moves)
-                                                  .reduce(
-                                                      (a, b) => a > b ? a : b)
-                                                  .toDouble() *
-                                              1.5 /
-                                              10)
-                                          .ceil() *
-                                      10,
-                              lineBarsData: [
-                                LineChartBarData(
-                                  spots: statistics.entries.length < 2
-                                      ? []
-                                      : statistics.entries
-                                          .asMap()
-                                          .entries
-                                          .map((entry) => FlSpot(
-                                              entry.key.toDouble(),
-                                              entry.value.moves.toDouble()))
-                                          .toList(),
-                                  isCurved: false,
-                                  color: theme.colorScheme.primary,
-                                  curveSmoothness: 0.2,
-                                  barWidth: 3,
-                                  isStrokeCapRound: true,
-                                  belowBarData: BarAreaData(
-                                    show: true,
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.3),
+                          SizedBox(
+                            width: 600,
+                            height: 250,
+                            child: Stack(
+                              children: [
+                                LineChart(
+                                  LineChartData(
+                                    minY: 0,
+                                    maxY: (statistics.entries
+                                                    .map((entry) => entry.moves)
+                                                    .reduce(
+                                                        (a, b) => a > b ? a : b)
+                                                    .toDouble() *
+                                                1.5 /
+                                                10)
+                                            .ceil() *
+                                        10,
+                                    lineBarsData: [
+                                      LineChartBarData(
+                                        spots: statistics.entries
+                                            .asMap()
+                                            .entries
+                                            .map((entry) => FlSpot(
+                                                entry.key.toDouble(),
+                                                entry.value.moves.toDouble()))
+                                            .toList(),
+                                        isCurved: false,
+                                        color: theme.colorScheme.primary,
+                                        curveSmoothness: 0.2,
+                                        barWidth: 3,
+                                        isStrokeCapRound: true,
+                                        belowBarData: BarAreaData(
+                                          show: true,
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.3),
+                                        ),
+                                      ),
+                                    ],
+                                    lineTouchData: const LineTouchData(
+                                      touchTooltipData: LineTouchTooltipData(
+                                        tooltipBgColor: Colors.transparent,
+                                      ),
+                                    ),
+                                    gridData: FlGridData(
+                                      show: true,
+                                      getDrawingHorizontalLine: (value) {
+                                        return FlLine(
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.4),
+                                          strokeWidth: 1,
+                                          dashArray: [5, 5],
+                                        );
+                                      },
+                                      getDrawingVerticalLine: (value) {
+                                        return FlLine(
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.4),
+                                          strokeWidth: 1,
+                                          dashArray: [5, 5],
+                                        );
+                                      },
+                                    ),
+                                    titlesData: FlTitlesData(
+                                      show: true,
+                                      topTitles: const AxisTitles(
+                                          sideTitles:
+                                              SideTitles(showTitles: false)),
+                                      bottomTitles: const AxisTitles(
+                                        sideTitles: SideTitles(
+                                          showTitles: false,
+                                        ),
+                                      ),
+                                      rightTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                              getTitlesWidget: (value, meta) =>
+                                                  const SizedBox.shrink(),
+                                              showTitles: true,
+                                              reservedSize: 45)),
+                                      leftTitles: AxisTitles(
+                                        sideTitles: SideTitles(
+                                          getTitlesWidget: (value, meta) =>
+                                              defaultGetTitle(value, meta),
+                                          showTitles: true,
+                                          reservedSize: 45,
+                                        ),
+                                      ),
+                                    ),
+                                    borderData: FlBorderData(
+                                      show: true,
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        left: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        right: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        top: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],
-                              lineTouchData: const LineTouchData(
-                                touchTooltipData: LineTouchTooltipData(
-                                  tooltipBgColor: Colors.transparent,
-                                ),
-                              ),
-                              gridData: FlGridData(
-                                show: true,
-                                getDrawingHorizontalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                                getDrawingVerticalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                              ),
-                              titlesData: FlTitlesData(
-                                show: true,
-                                topTitles: const AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                bottomTitles: const AxisTitles(
-                                  sideTitles: SideTitles(
-                                    showTitles: false,
-                                  ),
-                                ),
-                                rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                        getTitlesWidget: (value, meta) =>
-                                            const SizedBox.shrink(),
-                                        showTitles: true,
-                                        reservedSize: 45)),
-                                leftTitles: AxisTitles(
-                                  sideTitles: SideTitles(
-                                    getTitlesWidget: (value, meta) =>
-                                        statistics.entries.length < 2
-                                            ? const SizedBox.shrink()
-                                            : defaultGetTitle(value, meta),
-                                    showTitles: true,
-                                    reservedSize: 45,
-                                  ),
-                                ),
-                              ),
-                              borderData: FlBorderData(
-                                show: true,
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  left: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  right: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  top: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
                             ),
+                          ),
+                          const SizedBox(height: 15),
+                          Text.rich(
+                            TextSpan(
+                              text: "${locale.statisticMovesTaken}  ",
+                              style: theme.textTheme.bodyLarge,
+                              children: [
+                                WidgetSpan(
+                                  child: SizedBox(
+                                      height: 35,
+                                      child: Icon(
+                                        Icons.move_down,
+                                        color: theme.colorScheme.onBackground
+                                            .withOpacity(0.9),
+                                      )),
+                                  alignment: PlaceholderAlignment.middle,
+                                ),
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 15),
-                    if (statistics.entries.length > 2)
-                      Text.rich(
-                        TextSpan(
-                          text: "${locale.statisticMovesTaken}  ",
-                          style: theme.textTheme.bodyLarge,
-                          children: [
-                            WidgetSpan(
-                              child: SizedBox(
-                                  height: 35,
-                                  child: Icon(
-                                    Icons.move_down,
-                                    color: theme.colorScheme.onBackground
-                                        .withOpacity(0.9),
-                                  )),
-                              alignment: PlaceholderAlignment.middle,
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ],
-                ),
-                // Board sizes played per game chart
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 600,
-                      height: 250,
-                      child: Stack(
+                      // Board sizes played per game chart
+                      Column(
                         children: [
-                          if (statistics.entries.length < 2)
-                            Padding(
-                              padding: const EdgeInsets.all(60),
-                              child: Center(
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  locale.notEnoughStatisticDataYet,
-                                  style: theme.textTheme.bodyLarge,
-                                ),
-                              ),
-                            ),
-                          LineChart(
-                            LineChartData(
-                              minY: 0,
-                              maxY: statistics.entries.length < 2
-                                  ? null
-                                  : (statistics.entries
-                                                  .map((entry) =>
-                                                      entry.boardSize)
-                                                  .reduce(
-                                                      (a, b) => a > b ? a : b)
-                                                  .toDouble() *
-                                              1.5 /
-                                              10)
-                                          .ceil() *
-                                      10,
-                              lineBarsData: [
-                                LineChartBarData(
-                                  spots: statistics.entries.length < 2
-                                      ? []
-                                      : statistics.entries
-                                          .asMap()
-                                          .entries
-                                          .map((entry) => FlSpot(
-                                              entry.key.toDouble(),
-                                              entry.value.boardSize.toDouble()))
-                                          .toList(),
-                                  isCurved: false,
-                                  color: theme.colorScheme.primary,
-                                  curveSmoothness: 0.2,
-                                  barWidth: 3,
-                                  isStrokeCapRound: true,
-                                  belowBarData: BarAreaData(
-                                    show: true,
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.3),
+                          SizedBox(
+                            width: 600,
+                            height: 250,
+                            child: Stack(
+                              children: [
+                                LineChart(
+                                  LineChartData(
+                                    minY: 0,
+                                    maxY: (statistics.entries
+                                                    .map((entry) =>
+                                                        entry.boardSize)
+                                                    .reduce(
+                                                        (a, b) => a > b ? a : b)
+                                                    .toDouble() *
+                                                1.5 /
+                                                10)
+                                            .ceil() *
+                                        10,
+                                    lineBarsData: [
+                                      LineChartBarData(
+                                        spots: statistics.entries
+                                            .asMap()
+                                            .entries
+                                            .map((entry) => FlSpot(
+                                                entry.key.toDouble(),
+                                                entry.value.boardSize
+                                                    .toDouble()))
+                                            .toList(),
+                                        isCurved: false,
+                                        color: theme.colorScheme.primary,
+                                        curveSmoothness: 0.2,
+                                        barWidth: 3,
+                                        isStrokeCapRound: true,
+                                        belowBarData: BarAreaData(
+                                          show: true,
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.3),
+                                        ),
+                                      ),
+                                    ],
+                                    lineTouchData: const LineTouchData(
+                                      touchTooltipData: LineTouchTooltipData(
+                                        tooltipBgColor: Colors.transparent,
+                                      ),
+                                    ),
+                                    gridData: FlGridData(
+                                      show: true,
+                                      getDrawingHorizontalLine: (value) {
+                                        return FlLine(
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.4),
+                                          strokeWidth: 1,
+                                          dashArray: [5, 5],
+                                        );
+                                      },
+                                      getDrawingVerticalLine: (value) {
+                                        return FlLine(
+                                          color: theme.colorScheme.primary
+                                              .withOpacity(0.4),
+                                          strokeWidth: 1,
+                                          dashArray: [5, 5],
+                                        );
+                                      },
+                                    ),
+                                    titlesData: FlTitlesData(
+                                      show: true,
+                                      topTitles: const AxisTitles(
+                                          sideTitles:
+                                              SideTitles(showTitles: false)),
+                                      bottomTitles: const AxisTitles(
+                                        sideTitles: SideTitles(
+                                          showTitles: false,
+                                        ),
+                                      ),
+                                      rightTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                              getTitlesWidget: (value, meta) =>
+                                                  const SizedBox.shrink(),
+                                              showTitles: true,
+                                              reservedSize: 45)),
+                                      leftTitles: AxisTitles(
+                                        sideTitles: SideTitles(
+                                          getTitlesWidget: (value, meta) =>
+                                              defaultGetTitle(value, meta),
+                                          showTitles: true,
+                                          reservedSize: 45,
+                                        ),
+                                      ),
+                                    ),
+                                    borderData: FlBorderData(
+                                      show: true,
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        left: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        right: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                        top: BorderSide(
+                                          color: theme.colorScheme.outline,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],
-                              lineTouchData: const LineTouchData(
-                                touchTooltipData: LineTouchTooltipData(
-                                  tooltipBgColor: Colors.transparent,
-                                ),
-                              ),
-                              gridData: FlGridData(
-                                show: true,
-                                getDrawingHorizontalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                                getDrawingVerticalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                              ),
-                              titlesData: FlTitlesData(
-                                show: true,
-                                topTitles: const AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                bottomTitles: const AxisTitles(
-                                  sideTitles: SideTitles(
-                                    showTitles: false,
-                                  ),
-                                ),
-                                rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                        getTitlesWidget: (value, meta) =>
-                                            const SizedBox.shrink(),
-                                        showTitles: true,
-                                        reservedSize: 45)),
-                                leftTitles: AxisTitles(
-                                  sideTitles: SideTitles(
-                                    getTitlesWidget: (value, meta) =>
-                                        statistics.entries.length < 2
-                                            ? const SizedBox.shrink()
-                                            : defaultGetTitle(value, meta),
-                                    showTitles: true,
-                                    reservedSize: 45,
-                                  ),
-                                ),
-                              ),
-                              borderData: FlBorderData(
-                                show: true,
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  left: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  right: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  top: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    if (statistics.entries.length > 2)
-                      Text.rich(
-                        TextSpan(
-                          text: "${locale.statisticBoardSizesPlayed}  ",
-                          style: theme.textTheme.bodyLarge,
-                          children: [
-                            WidgetSpan(
-                              child: SizedBox(
-                                  height: 35,
-                                  child: Icon(
-                                    Icons.aspect_ratio,
-                                    color: theme.colorScheme.onBackground
-                                        .withOpacity(0.9),
-                                  )),
-                              alignment: PlaceholderAlignment.middle,
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ],
-                ),
-                // Games played per day chart
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 600,
-                      height: 250,
-                      child: Stack(
-                        children: [
-                          if (statistics.entries.length < 2)
-                            Padding(
-                              padding: const EdgeInsets.all(60),
-                              child: Center(
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  locale.notEnoughStatisticDataYet,
-                                  style: theme.textTheme.bodyLarge,
-                                ),
-                              ),
-                            ),
-                          LineChart(
-                            LineChartData(
-                              minY: 0,
-                              maxY: statistics.entries.length < 2
-                                  ? null
-                                  : (statistics.entries
-                                                  .map((entry) => entry.date)
-                                                  .reduce((a, b) =>
-                                                      a.isAfter(b) ? a : b)
-                                                  .difference(statistics.entries
-                                                      .map(
-                                                          (entry) => entry.date)
-                                                      .reduce((a, b) =>
-                                                          a.isBefore(b)
-                                                              ? a
-                                                              : b))
-                                                  .inDays
-                                                  .toDouble() *
-                                              1.5 /
-                                              10)
-                                          .ceil() *
-                                      10,
-                              lineBarsData: [
-                                LineChartBarData(
-                                  spots: statistics.entries.length < 2
-                                      ? []
-                                      : statistics.entries
-                                          .asMap()
-                                          .entries
-                                          .map((entry) => FlSpot(
-                                              entry.key.toDouble(),
-                                              entry.value.date
-                                                  .difference(statistics.entries
-                                                      .map(
-                                                          (entry) => entry.date)
-                                                      .reduce((a, b) =>
-                                                          a.isBefore(b)
-                                                              ? a
-                                                              : b))
-                                                  .inDays
-                                                  .toDouble()))
-                                          .toList(),
-                                  isCurved: false,
-                                  color: theme.colorScheme.primary,
-                                  curveSmoothness: 0.2,
-                                  barWidth: 3,
-                                  isStrokeCapRound: true,
-                                  belowBarData: BarAreaData(
-                                    show: true,
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.3),
-                                  ),
+                          const SizedBox(height: 15),
+                          Text.rich(
+                            TextSpan(
+                              text: "${locale.statisticBoardSizesPlayed}  ",
+                              style: theme.textTheme.bodyLarge,
+                              children: [
+                                WidgetSpan(
+                                  child: SizedBox(
+                                      height: 35,
+                                      child: Icon(
+                                        Icons.aspect_ratio,
+                                        color: theme.colorScheme.onBackground
+                                            .withOpacity(0.9),
+                                      )),
+                                  alignment: PlaceholderAlignment.middle,
                                 ),
                               ],
-                              lineTouchData: const LineTouchData(
-                                touchTooltipData: LineTouchTooltipData(
-                                  tooltipBgColor: Colors.transparent,
-                                ),
-                              ),
-                              gridData: FlGridData(
-                                show: true,
-                                getDrawingHorizontalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                                getDrawingVerticalLine: (value) {
-                                  return FlLine(
-                                    color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
-                                    strokeWidth: 1,
-                                    dashArray: [5, 5],
-                                  );
-                                },
-                              ),
-                              titlesData: FlTitlesData(
-                                show: true,
-                                topTitles: const AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                bottomTitles: const AxisTitles(
-                                  sideTitles: SideTitles(
-                                    showTitles: false,
-                                  ),
-                                ),
-                                rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                        getTitlesWidget: (value, meta) =>
-                                            const SizedBox.shrink(),
-                                        showTitles: true,
-                                        reservedSize: 45)),
-                                leftTitles: AxisTitles(
-                                  sideTitles: SideTitles(
-                                    getTitlesWidget: (value, meta) =>
-                                        statistics.entries.length < 2
-                                            ? const SizedBox.shrink()
-                                            : defaultGetTitle(value, meta),
-                                    showTitles: true,
-                                    reservedSize: 45,
-                                  ),
-                                ),
-                              ),
-                              borderData: FlBorderData(
-                                show: true,
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  left: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  right: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                  top: BorderSide(
-                                    color: theme.colorScheme.outline,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 15),
-                    if (statistics.entries.length > 2)
-                      Text.rich(
-                        TextSpan(
-                          text: "${locale.statisticGamesPlayed}  ",
-                          style: theme.textTheme.bodyLarge,
-                          children: [
-                            WidgetSpan(
-                              child: SizedBox(
-                                  height: 35,
-                                  child: Icon(
-                                    Icons.calendar_today,
-                                    color: theme.colorScheme.onBackground
-                                        .withOpacity(0.9),
-                                  )),
-                              alignment: PlaceholderAlignment.middle,
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ],
-                ),
-              ],
-            );
+                    ],
+                  );
           }),
         ),
       ]),
