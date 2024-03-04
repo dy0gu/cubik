@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "일일 플레이 횟수",
   "statisticBoardSizesPlayed": "게임당 보드 크기",
   "seedCopied": "시드가 클립보드에 복사되었습니다!",
-  "notEnoughStatisticDataYet": "아직 충분한 통계 데이터가 없습니다!"
+  "notEnoughStatisticDataYet": "승리 기록을 보려면 {gamesWon, plural, =1{1게임 더} other{{gamesWon}게임 더}} 이겨야 합니다!",
+  "increase": "증가",
+  "decrease": "감소",
+  "helpBodyThird": "셔플 버튼을 사용하여 보드를 무작위로 섞거나 크기를 변경하기 위해 증가/감소 버튼을 사용할 수도 있습니다.",
+  "helpBodyFourth": "프로필에는 승리 이력의 그래프가 있습니다. 각 노드를 탭하여 해당 게임에 대한 자세한 내용을 볼 수 있습니다.",
+  "date": "날짜",
+  "time": "시간",
+  "moves": "움직임",
+  "size": "크기",
+  "board": "게임 보드"
 }

@@ -61,5 +61,14 @@
   "statisticGamesPlayed": "Jogos jogados por dia",
   "statisticBoardSizesPlayed": "Tamanho do tabuleiro por jogo",
   "seedCopied": "Seed copiada para a área de transferência!",
-  "notEnoughStatisticDataYet": "Ainda não há dados estatísticos suficientes!"
+  "notEnoughStatisticDataYet": "Ganha {gamesWon, plural, =1{mais 1 jogo} other{mais {gamesWon} jogos}} para ver o teu histórico de vitórias!",
+  "increase": "Aumentar",
+  "decrease": "Diminuir",
+  "helpBodyThird": "Podes também usar o botão de baralhar para aleatorizar o tabuleiro, ou os botões de aumentar/diminuir para mudar o seu tamanho.",
+  "helpBodyFourth": "No teu perfil encontrarás um gráfico do teu histórico de vitórias. Podes tocar em cada nó para mais detalhes sobre esse jogo específico.",
+  "date": "Data",
+  "time": "Tempo",
+  "moves": "Movimentos",
+  "size": "Tamanho",
+  "board": "Tabuleiro"
 }

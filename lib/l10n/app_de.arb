@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "Gespielte Spiele pro Tag",
   "statisticBoardSizesPlayed": "Brettgröße pro Spiel",
   "seedCopied": "Saatgut in die Zwischenablage kopiert!",
-  "notEnoughStatisticDataYet": "Noch nicht genügend statistische Daten vorhanden!"
+  "notEnoughStatisticDataYet": "Gewinne {gamesWon, plural, =1{ein weiteres Spiel} other{{gamesWon} weitere Spiele}}, um deinen Gewinnverlauf zu sehen!",
+  "increase": "Erhöhen",
+  "decrease": "Verringern",
+  "helpBodyThird": "Sie können auch die Mischschaltfläche verwenden, um das Brett zu randomisieren, oder die Schaltflächen zum Erhöhen/Verringern, um seine Größe zu ändern.",
+  "helpBodyFourth": "In Ihrem Profil finden Sie ein Diagramm Ihres Gewinnverlaufs. Sie können auf jeden Knoten tippen, um weitere Details zu diesem bestimmten Spiel zu erhalten.",
+  "date": "Datum",
+  "time": "Zeit",
+  "moves": "Züge",
+  "size": "Größe",
+  "board": "Brett"
 }

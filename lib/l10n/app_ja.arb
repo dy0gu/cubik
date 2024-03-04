@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "1日あたりのプレイ回数",
   "statisticBoardSizesPlayed": "ゲームあたりのボードサイズ",
   "seedCopied": "シードがクリップボードにコピーされました！",
-  "notEnoughStatisticDataYet": "まだ十分な統計データがありません！"
+  "notEnoughStatisticDataYet": "勝利の履歴を確認するには、さらに{gamesWon, plural, =1{1つのゲーム} other{{gamesWon}つのゲーム}}を勝利してください!",
+  "increase": "増やす",
+  "decrease": "減らす",
+  "helpBodyThird": "また、シャッフルボタンを使用してボードをランダム化したり、サイズを変更するための増減ボタンを使用することもできます。",
+  "helpBodyFourth": "プロフィールには勝利履歴のグラフが表示されます。各ノードをタップして、その特定のゲームの詳細を表示できます。",
+  "date": "日付",
+  "time": "時間",
+  "moves": "手順",
+  "size": "サイズ",
+  "board": "ボード"
 }

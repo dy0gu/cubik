@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "Giochi giocati al giorno",
   "statisticBoardSizesPlayed": "Dimensione della scacchiera per gioco",
   "seedCopied": "Seme copiato negli appunti!",
-  "notEnoughStatisticDataYet": "Ancora non abbastanza dati statistici!"
+  "notEnoughStatisticDataYet": "Vinci {gamesWon, plural, =1{un altro gioco} other{{gamesWon} giochi in più}} per vedere il tuo storico delle vittorie!",
+  "increase": "Aumentare",
+  "decrease": "Diminuire",
+  "helpBodyThird": "Puoi anche usare il pulsante di mescolamento per randomizzare il tabellone, o i pulsanti di aumento/diminuzione per cambiarne le dimensioni.",
+  "helpBodyFourth": "Nel tuo profilo troverai un grafico del tuo storico di vittorie. Puoi toccare ogni nodo per ulteriori dettagli su quel gioco specifico.",
+  "date": "Data",
+  "time": "Tempo",
+  "moves": "Mosse",
+  "size": "Dimensione",
+  "board": "Tabellone"
 }

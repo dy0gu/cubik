@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "Jeux joués par jour",
   "statisticBoardSizesPlayed": "Taille du plateau par partie",
   "seedCopied": "Graine copiée dans le presse-papiers !",
-  "notEnoughStatisticDataYet": "Pas encore assez de données statistiques !"
+  "notEnoughStatisticDataYet": "Gagnez {gamesWon, plural, =1{1 jeu de plus} other{{gamesWon} jeux de plus}} pour voir votre historique de victoires!",
+  "increase": "Augmenter",
+  "decrease": "Diminuer",
+  "helpBodyThird": "Vous pouvez également utiliser le bouton de mélange pour randomiser le tableau, ou les boutons d'augmentation/diminution pour changer sa taille.",
+  "helpBodyFourth": "Dans votre profil, vous trouverez un graphique de votre historique de victoires. Vous pouvez cliquer sur chaque nœud pour plus de détails sur ce jeu spécifique.",
+  "date": "Date",
+  "time": "Temps",
+  "moves": "Mouvements",
+  "size": "Taille",
+  "board": "Tableau"
 }

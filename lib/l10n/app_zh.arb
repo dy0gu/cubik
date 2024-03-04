@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "每天玩的游戏数量",
   "statisticBoardSizesPlayed": "每场游戏的棋盘大小",
   "seedCopied": "种子已复制到剪贴板！",
-  "notEnoughStatisticDataYet": "尚无足够的统计数据！"
+  "notEnoughStatisticDataYet": "赢得 {gamesWon, plural, =1{1 更多游戏} other{{gamesWon} 更多游戏}} 来查看你的胜利历史!",
+  "increase": "增加",
+  "decrease": "减少",
+  "helpBodyThird": "您还可以使用混洗按钮来随机化游戏板，或使用增加/减少按钮来更改其大小。",
+  "helpBodyFourth": "在您的个人资料中，您将找到您的胜利历史图表。您可以点击每个节点以获取有关该特定游戏的更多详细信息。",
+  "date": "日期",
+  "time": "时间",
+  "moves": "移动",
+  "size": "尺寸",
+  "board": "棋盘"
 }

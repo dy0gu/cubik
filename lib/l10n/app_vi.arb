@@ -59,5 +59,14 @@
   "statisticGamesPlayed": "Số trò chơi chơi mỗi ngày",
   "statisticBoardSizesPlayed": "Kích thước bảng trung bình mỗi trò chơi",
   "seedCopied": "Hạt đã được sao chép vào clipboard!",
-  "notEnoughStatisticDataYet": "Chưa đủ dữ liệu thống kê!"
+  "notEnoughStatisticDataYet": "Chiến thắng {gamesWon, plural, =1{1 trò chơi nữa} other{{gamesWon} trò chơi nữa}} để xem lịch sử chiến thắng của bạn!",
+  "increase": "Tăng",
+  "decrease": "Giảm",
+  "helpBodyThird": "Bạn cũng có thể sử dụng nút xáo trộn để ngẫu nhiên hóa bảng, hoặc các nút tăng/giảm để thay đổi kích thước của nó.",
+  "helpBodyFourth": "Trong hồ sơ của bạn, bạn sẽ tìm thấy biểu đồ về lịch sử chiến thắng của bạn. Bạn có thể nhấn vào mỗi nút để biết thêm chi tiết về trò chơi cụ thể đó.",
+  "date": "Ngày",
+  "time": "Thời gian",
+  "moves": "Nước đi",
+  "size": "Kích thước",
+  "board": "Bảng"
 }
