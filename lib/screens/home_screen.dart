@@ -174,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                                   value: -piece.value.toDouble().abs(),
                                   effects: const [ShakeEffect()],
                                   child: Material(
-                                    elevation: 6,
+                                    elevation: 2,
                                     borderRadius:
                                         BorderRadius.circular(66 / row.length),
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
