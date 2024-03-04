@@ -87,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
                 child: FloatingActionButton(
                   focusElevation: 2,
                   hoverElevation: 2,
-                  elevation: 2,
+                  elevation: 1,
                   heroTag: null,
                   child: Icon(
                     Icons.colorize,
