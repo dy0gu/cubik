@@ -175,17 +175,17 @@ class ProfileScreen extends StatelessWidget {
                                   ],
                                   lineTouchData: LineTouchData(
                                     touchTooltipData: LineTouchTooltipData(
-                                      maxContentWidth: 200,
+                                      maxContentWidth: 300,
                                       getTooltipItems: (touchedSpots) {
                                         return touchedSpots.map((touchedSpot) {
                                           final entry = statistics
                                               .entries[touchedSpot.x.toInt()];
                                           return LineTooltipItem(
                                             """
-Moves: ${touchedSpot.y.toInt()}
-Board: ${entry.boardSize}x${entry.boardSize}
-Date: ${entry.date.day.toString().padLeft(2, '0')}/${entry.date.month.toString().padLeft(2, '0')}/${entry.date.year}
-Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}:${entry.date.second.toString().padLeft(2, '0')}""",
+${locale.moves}: ${touchedSpot.y.toInt()}
+${locale.board}: ${entry.boardSize}x${entry.boardSize}
+${locale.date}: ${entry.date.day.toString().padLeft(2, '0')}/${entry.date.month.toString().padLeft(2, '0')}/${entry.date.year}
+${locale.hours}: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}:${entry.date.second.toString().padLeft(2, '0')}""",
                                             theme.textTheme.bodyLarge!.copyWith(
                                                 color: theme.colorScheme
                                                     .onPrimaryContainer),

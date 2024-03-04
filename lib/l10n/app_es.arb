@@ -65,7 +65,7 @@
   "helpBodyThird": "También puedes usar el botón de mezcla para aleatorizar el tablero, o los botones de aumentar/disminuir para cambiar su tamaño.",
   "helpBodyFourth": "En tu perfil encontrarás un gráfico de tu historial de victorias. Puedes tocar en cada nodo para obtener más detalles sobre ese juego específico.",
   "date": "Fecha",
-  "time": "Tiempo",
+  "hours": "Tiempo",
   "moves": "Movimientos",
   "size": "Tamaño",
   "board": "Tablero"

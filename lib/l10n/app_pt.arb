@@ -67,7 +67,7 @@
   "helpBodyThird": "Podes também usar o botão de baralhar para aleatorizar o tabuleiro, ou os botões de aumentar/diminuir para mudar o seu tamanho.",
   "helpBodyFourth": "No teu perfil encontrarás um gráfico do teu histórico de vitórias. Podes tocar em cada nó para mais detalhes sobre esse jogo específico.",
   "date": "Data",
-  "time": "Tempo",
+  "hours": "Horas",
   "moves": "Movimentos",
   "size": "Tamanho",
   "board": "Tabuleiro"
