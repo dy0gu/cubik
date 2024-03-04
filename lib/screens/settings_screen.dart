@@ -4,7 +4,6 @@ import "package:go_router/go_router.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:cubik/logic/settings_bloc.dart";
 import "package:cubik/widgets/framed.dart";
-import "package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -58,7 +57,7 @@ class SettingsScreen extends StatelessWidget {
                   leadingIcon: const Icon(Icons.color_lens),
                   requestFocusOnTap: false,
                   initialSelection:
-                      context.watch<SettingsBloc>().state.themeMode,
+                      context.read<SettingsBloc>().state.themeMode,
                   onSelected: (ThemeMode? value) {
                     if (value != null) {
                       context
@@ -85,61 +84,139 @@ class SettingsScreen extends StatelessWidget {
               Tooltip(
                 waitDuration: const Duration(seconds: 1),
                 message: locale.color,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(30),
-                  onTap: () {
+                child: FloatingActionButton(
+                  heroTag: null,
+                  child: Icon(
+                    Icons.colorize,
+                    color: theme.colorScheme.onPrimaryContainer,
+                  ),
+                  onPressed: () {
+                    final bloc = context.read<SettingsBloc>();
                     showDialog(
                         barrierDismissible: false,
                         context: context,
-                        builder: (context) => AlertDialog(
-                              content: SizedBox(
-                                height: MediaQuery.of(context).size.height / 2,
-                                width: MediaQuery.of(context).size.width / 4,
-                                child: WheelPicker(
-                                  color: HSVColor.fromColor(context
-                                      .watch<SettingsBloc>()
-                                      .state
-                                      .themeSeed),
-                                  onChanged: (value) {
-                                    context.read<SettingsBloc>().add(
-                                        SettingsThemeSeedChanged(
-                                            value.toColor()));
-                                  },
+                        builder: (innerContext) => BlocBuilder<SettingsBloc,
+                                Settings>(
+                            bloc: bloc,
+                            builder: (builderContext, settings) {
+                              ThemeData theme = Theme.of(context);
+                              return AlertDialog(
+                                content: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text("R",
+                                            style: theme.textTheme.bodyLarge),
+                                        Expanded(
+                                          child: Slider(
+                                              value: settings.themeSeed.red
+                                                  .toDouble(),
+                                              min: 0,
+                                              max: 255,
+                                              onChanged: (value) {
+                                                builderContext
+                                                    .read<SettingsBloc>()
+                                                    .add(
+                                                        SettingsThemeSeedChanged(
+                                                            Color.fromARGB(
+                                                                255,
+                                                                value.toInt(),
+                                                                settings
+                                                                    .themeSeed
+                                                                    .green,
+                                                                settings
+                                                                    .themeSeed
+                                                                    .blue)));
+                                              }),
+                                        ),
+                                        Text(settings.themeSeed.red.toString(),
+                                            style: theme.textTheme.bodyLarge),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 15),
+                                    Row(
+                                      children: [
+                                        Text("G",
+                                            style: theme.textTheme.bodyLarge),
+                                        Expanded(
+                                          child: Slider(
+                                              value: settings.themeSeed.green
+                                                  .toDouble(),
+                                              min: 0,
+                                              max: 255,
+                                              onChanged: (value) {
+                                                builderContext
+                                                    .read<SettingsBloc>()
+                                                    .add(
+                                                        SettingsThemeSeedChanged(
+                                                            Color.fromARGB(
+                                                                255,
+                                                                settings
+                                                                    .themeSeed
+                                                                    .red,
+                                                                value.toInt(),
+                                                                settings
+                                                                    .themeSeed
+                                                                    .blue)));
+                                              }),
+                                        ),
+                                        Text(
+                                            settings.themeSeed.green.toString(),
+                                            style: theme.textTheme.bodyLarge),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 15),
+                                    Row(
+                                      children: [
+                                        Text("B",
+                                            style: theme.textTheme.bodyLarge),
+                                        Expanded(
+                                          child: Slider(
+                                              value: settings.themeSeed.blue
+                                                  .toDouble(),
+                                              min: 0,
+                                              max: 255,
+                                              onChanged: (value) {
+                                                builderContext
+                                                    .read<SettingsBloc>()
+                                                    .add(
+                                                        SettingsThemeSeedChanged(
+                                                            Color.fromARGB(
+                                                                255,
+                                                                settings
+                                                                    .themeSeed
+                                                                    .red,
+                                                                settings
+                                                                    .themeSeed
+                                                                    .green,
+                                                                value
+                                                                    .toInt())));
+                                              }),
+                                        ),
+                                        Text(settings.themeSeed.blue.toString(),
+                                            style: theme.textTheme.bodyLarge),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              actionsAlignment: MainAxisAlignment.center,
-                              actions: [
-                                Tooltip(
-                                  waitDuration: const Duration(seconds: 1),
-                                  message: locale.back,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Icon(Icons.arrow_back),
+                                actionsAlignment: MainAxisAlignment.center,
+                                actions: [
+                                  Tooltip(
+                                    waitDuration: const Duration(seconds: 1),
+                                    message: locale.back,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.of(builderContext).pop();
+                                      },
+                                      child: const Icon(Icons.arrow_back),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ));
+                                ],
+                              );
+                            }));
                   },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: theme.colorScheme.outline,
-                        width: 1,
-                      ),
-                      color: theme.colorScheme.primaryContainer,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.colorize,
-                        color: theme.colorScheme.onBackground.withOpacity(0.9),
-                      ),
-                    ),
-                  ),
                 ),
               ),
             ],
@@ -160,7 +237,7 @@ class SettingsScreen extends StatelessWidget {
               initialSelection: context.watch<SettingsBloc>().state.locale,
               onSelected: (Locale? value) {
                 context.read<SettingsBloc>().add(SettingsLocaleSelected(value));
-                // Hide current snackbar since language change does not affect existing
+                // Hide current snackbar since language change does not affect existing snackbars
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
               },
               dropdownMenuEntries: [
@@ -223,46 +300,6 @@ class SettingsScreen extends StatelessWidget {
                 const DropdownMenuEntry<Locale?>(
                   value: Locale("ko", "KR"),
                   label: "한국어",
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 30),
-          Tooltip(
-            waitDuration: const Duration(seconds: 1),
-            message: locale.music,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.music_note,
-                    color: theme.colorScheme.onBackground.withOpacity(0.8)),
-                Slider(
-                  value: context.watch<SettingsBloc>().state.musicVolume,
-                  onChanged: (value) {
-                    context
-                        .read<SettingsBloc>()
-                        .add(SettingsMusicVolumeChanged(value));
-                  },
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 30),
-          Tooltip(
-            waitDuration: const Duration(seconds: 1),
-            message: locale.effects,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.volume_up,
-                    color: theme.colorScheme.onBackground.withOpacity(0.8)),
-                Slider(
-                  value: context.watch<SettingsBloc>().state.sfxVolume,
-                  onChanged: (value) {
-                    context
-                        .read<SettingsBloc>()
-                        .add(SettingsSfxVolumeChanged(value));
-                  },
                 ),
               ],
             ),
