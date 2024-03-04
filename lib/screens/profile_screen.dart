@@ -171,6 +171,7 @@ class ProfileScreen extends StatelessWidget {
                                   ],
                                   lineTouchData: LineTouchData(
                                     touchTooltipData: LineTouchTooltipData(
+                                      maxContentWidth: 200,
                                       getTooltipItems: (touchedSpots) {
                                         return touchedSpots.map((touchedSpot) {
                                           final entry = statistics
@@ -179,8 +180,8 @@ class ProfileScreen extends StatelessWidget {
                                             """
 Moves: ${touchedSpot.y.toInt()}
 Board: ${entry.boardSize}x${entry.boardSize}
-Date: ${entry.date.day}/${entry.date.month}/${entry.date.year}
-Time: ${entry.date.hour}:${entry.date.minute}""",
+Date: ${entry.date.day.toString().padLeft(2, '0')}/${entry.date.month.toString().padLeft(2, '0')}/${entry.date.year}
+Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}""",
                                             theme.textTheme.bodyLarge!.copyWith(
                                                 color: theme.colorScheme
                                                     .onPrimaryContainer),
