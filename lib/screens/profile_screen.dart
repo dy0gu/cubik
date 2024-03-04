@@ -122,10 +122,11 @@ class ProfileScreen extends StatelessWidget {
           create: (context) => StatisticsBloc(),
           child: BlocBuilder<StatisticsBloc, Statistics>(
               builder: (context, statistics) {
-            return statistics.entries.isEmpty
+            return statistics.entries.length < 2
                 ? Text(
                     textAlign: TextAlign.center,
-                    locale.notEnoughStatisticDataYet,
+                    locale.notEnoughStatisticDataYet(
+                        2 - statistics.entries.length),
                     style: theme.textTheme.bodyLarge,
                   )
                 : Wrap(spacing: 60, runSpacing: 60, children: [
@@ -133,11 +134,14 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: 600,
-                          height: 250,
+                          height: 200,
                           child: Stack(
                             children: [
                               LineChart(
                                 LineChartData(
+                                  minX: -2,
+                                  maxX:
+                                      statistics.entries.length.toDouble() + 1,
                                   minY: 0,
                                   maxY: (statistics.entries
                                                   .map((entry) => entry.moves)
@@ -181,7 +185,7 @@ class ProfileScreen extends StatelessWidget {
 Moves: ${touchedSpot.y.toInt()}
 Board: ${entry.boardSize}x${entry.boardSize}
 Date: ${entry.date.day.toString().padLeft(2, '0')}/${entry.date.month.toString().padLeft(2, '0')}/${entry.date.year}
-Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}""",
+Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}:${entry.date.second.toString().padLeft(2, '0')}""",
                                             theme.textTheme.bodyLarge!.copyWith(
                                                 color: theme.colorScheme
                                                     .onPrimaryContainer),
@@ -231,7 +235,7 @@ Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString
                                     leftTitles: AxisTitles(
                                       sideTitles: SideTitles(
                                         getTitlesWidget: (value, meta) =>
-                                            defaultGetTitle(value, meta),
+                                            const SizedBox.shrink(),
                                         showTitles: true,
                                         reservedSize: 45,
                                       ),
@@ -262,26 +266,6 @@ Time: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString
                               ),
                             ],
                           ),
-                        ),
-                        const SizedBox(height: 15),
-                        Text.rich(
-                          TextSpan(
-                            text: "${locale.statisticMovesTaken}  ",
-                            style: theme.textTheme.bodyLarge,
-                            children: [
-                              WidgetSpan(
-                                child: SizedBox(
-                                    height: 35,
-                                    child: Icon(
-                                      Icons.move_down,
-                                      color: theme.colorScheme.onBackground
-                                          .withOpacity(0.9),
-                                    )),
-                                alignment: PlaceholderAlignment.middle,
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),

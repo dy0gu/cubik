@@ -51,8 +51,11 @@ class HomeScreen extends StatelessWidget {
                               context: context,
                               builder: (context) => AlertDialog(
                                     title: Text(locale.helpTitle),
-                                    content: Text(
-                                        "${locale.helpBodyFirst}\n\n${locale.helpBodySecond}"),
+                                    content: Text("""
+${locale.helpBodyFirst}\n
+${locale.helpBodySecond}\n
+${locale.helpBodyThird}\n
+${locale.helpBodyFourth}"""),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [
                                       Tooltip(
@@ -270,6 +273,24 @@ class HomeScreen extends StatelessWidget {
                                       .read<GameBloc>()
                                       .add(GameShuffled()),
                                   child: const Icon(Icons.shuffle)),
+                            ),
+                            Tooltip(
+                              waitDuration: const Duration(seconds: 1),
+                              message: locale.increase,
+                              child: ElevatedButton(
+                                  onPressed: () => context
+                                      .read<GameBloc>()
+                                      .add(GameSizeIncreased()),
+                                  child: const Icon(Icons.add)),
+                            ),
+                            Tooltip(
+                              waitDuration: const Duration(seconds: 1),
+                              message: locale.decrease,
+                              child: ElevatedButton(
+                                  onPressed: () => context
+                                      .read<GameBloc>()
+                                      .add(GameSizeDecreased()),
+                                  child: const Icon(Icons.remove)),
                             ),
                             BlocProvider(
                               lazy: false,

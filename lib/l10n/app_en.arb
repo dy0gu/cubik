@@ -61,5 +61,9 @@
   "statisticGamesPlayed": "Games played per day",
   "statisticBoardSizesPlayed": "Board size per game",
   "seedCopied": "Seed copied to clipboard!",
-  "notEnoughStatisticDataYet":  "Not enough statistic data yet!"
+  "notEnoughStatisticDataYet":  "Win {gamesWon, plural, =1{1 more game} other{{gamesWon} more games}} to see your win history!",
+  "increase": "Increase",
+  "decrease": "Decrease",
+  "helpBodyThird": "You can also use the shuffle button to randomize the board, or the increase/decrease buttons to change its size.",
+  "helpBodyFourth": "In your profile you will find a graph of your win history. you can tap on each node for more details on that specific game."
 }
