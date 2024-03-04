@@ -85,6 +85,9 @@ class SettingsScreen extends StatelessWidget {
                 waitDuration: const Duration(seconds: 1),
                 message: locale.color,
                 child: FloatingActionButton(
+                  focusElevation: 2,
+                  hoverElevation: 2,
+                  elevation: 2,
                   heroTag: null,
                   child: Icon(
                     Icons.colorize,
