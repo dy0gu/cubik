@@ -9,6 +9,8 @@ import "package:cubik/widgets/framed.dart";
 import "package:cubik/logic/game_bloc.dart";
 import "package:flutter_animate/flutter_animate.dart";
 import "package:share_plus/share_plus.dart";
+import "package:url_launcher/url_launcher.dart";
+import "package:simple_icons/simple_icons.dart";
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -51,11 +53,13 @@ class HomeScreen extends StatelessWidget {
                               context: context,
                               builder: (context) => AlertDialog(
                                     title: Text(locale.helpTitle),
-                                    content: Text("""
+                                    content: Text(
+                                      """
 ${locale.helpBodyFirst}\n
 ${locale.helpBodySecond}\n
 ${locale.helpBodyThird}\n
-${locale.helpBodyFourth}"""),
+${locale.helpBodyFourth}\n""",
+                                    ),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [
                                       Tooltip(
@@ -69,6 +73,22 @@ ${locale.helpBodyFourth}"""),
                                               Icons.arrow_back,
                                             )),
                                       ),
+                                      Tooltip(
+                                          waitDuration:
+                                              const Duration(seconds: 1),
+                                          message: "Github",
+                                          child: ElevatedButton(
+                                              child: const Icon(
+                                                  SimpleIcons.github),
+                                              onPressed: () async {
+                                                if (!await launchUrl(
+                                                    Uri.parse(
+                                                        "https://github.com/dy0gu/Cubik"),
+                                                    mode: LaunchMode
+                                                        .platformDefault,
+                                                    webOnlyWindowName:
+                                                        "_blank")) {}
+                                              })),
                                     ],
                                   ))),
                     ),
