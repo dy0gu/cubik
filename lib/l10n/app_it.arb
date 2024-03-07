@@ -65,7 +65,7 @@
   "helpBodyThird": "Puoi anche usare il pulsante di mescolamento per randomizzare il tabellone, o i pulsanti di aumento/diminuzione per cambiarne le dimensioni.",
   "helpBodyFourth": "Nel tuo profilo troverai un grafico del tuo storico di vittorie. Puoi toccare ogni nodo per ulteriori dettagli su quel gioco specifico.",
   "date": "Data",
-  "hours": "Tempo",
+  "time": "Tempo",
   "moves": "Mosse",
   "size": "Dimensione",
   "board": "Tabellone"

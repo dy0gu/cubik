@@ -67,7 +67,7 @@
   "helpBodyThird": "You can also use the shuffle button to randomize the board, or the increase/decrease buttons to change its size.",
   "helpBodyFourth": "In your profile you will find a graph of your win history. You can tap on each node for more details on that specific game.",
   "date": "Date",
-  "hours": "Hours",
+  "time": "Time",
   "moves": "Moves",
   "size": "Size",
   "board": "Board"

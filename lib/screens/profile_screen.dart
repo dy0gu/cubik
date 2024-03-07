@@ -185,7 +185,7 @@ class ProfileScreen extends StatelessWidget {
 ${locale.moves}: ${touchedSpot.y.toInt()}
 ${locale.board}: ${entry.boardSize}x${entry.boardSize}
 ${locale.date}: ${entry.date.day.toString().padLeft(2, '0')}/${entry.date.month.toString().padLeft(2, '0')}/${entry.date.year}
-${locale.hours}: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}:${entry.date.second.toString().padLeft(2, '0')}""",
+${locale.time}: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minute.toString().padLeft(2, '0')}:${entry.date.second.toString().padLeft(2, '0')}""",
                                             theme.textTheme.bodyLarge!.copyWith(
                                                 color: theme.colorScheme
                                                     .onPrimaryContainer),

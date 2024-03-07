@@ -65,7 +65,7 @@
   "helpBodyThird": "Sie können auch die Mischschaltfläche verwenden, um das Brett zu randomisieren, oder die Schaltflächen zum Erhöhen/Verringern, um seine Größe zu ändern.",
   "helpBodyFourth": "In Ihrem Profil finden Sie ein Diagramm Ihres Gewinnverlaufs. Sie können auf jeden Knoten tippen, um weitere Details zu diesem bestimmten Spiel zu erhalten.",
   "date": "Datum",
-  "hours": "Zeit",
+  "time": "Zeit",
   "moves": "Züge",
   "size": "Größe",
   "board": "Brett"

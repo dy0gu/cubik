@@ -65,7 +65,7 @@
   "helpBodyThird": "Vous pouvez également utiliser le bouton de mélange pour randomiser le tableau, ou les boutons d'augmentation/diminution pour changer sa taille.",
   "helpBodyFourth": "Dans votre profil, vous trouverez un graphique de votre historique de victoires. Vous pouvez cliquer sur chaque nœud pour plus de détails sur ce jeu spécifique.",
   "date": "Date",
-  "hours": "Temps",
+  "time": "Temps",
   "moves": "Mouvements",
   "size": "Taille",
   "board": "Tableau"
