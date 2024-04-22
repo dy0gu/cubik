@@ -115,8 +115,8 @@ ${locale.helpBodyFourth}\n""",
           BlocProvider<GameBloc>(
             lazy: true,
             create: (context) => GameBloc(),
-            child: BlocBuilder<GameBloc, Game>(
-              builder: (context, game) {
+            child: BlocListener<GameBloc, Game>(
+              listener: (context, game) {
                 if (game.isOver()) {
                   confettiControllerLeft.play();
                   confettiControllerRight.play();
@@ -163,178 +163,175 @@ ${locale.helpBodyFourth}\n""",
                     ));
                   });
                 }
-
-                return BlocBuilder<GameBloc, Game>(
-                  builder: (context, game) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: ConfettiWidget(
-                                minimumSize: const Size(5, 5),
-                                maximumSize: const Size(10, 10),
-                                blastDirection: 3.14 * 2,
-                                confettiController: confettiControllerLeft)),
-                        Align(
-                            alignment: Alignment.centerRight,
-                            child: ConfettiWidget(
-                                minimumSize: const Size(5, 5),
-                                maximumSize: const Size(10, 10),
-                                blastDirection: 3.14,
-                                confettiController: confettiControllerRight)),
-                        Column(
-                            children: game.pieces.map((row) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: row.map((piece) {
-                              return Padding(
-                                padding: const EdgeInsets.all(2),
-                                child: Animate(
-                                  value: -piece.value.toDouble().abs(),
-                                  effects: const [ShakeEffect()],
-                                  child: Material(
-                                    elevation: 1,
-                                    borderRadius:
-                                        BorderRadius.circular(66 / row.length),
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: theme.colorScheme.background,
-                                    surfaceTintColor: Colors.transparent,
-                                    type: MaterialType.card,
-                                    child: piece.value == 0
-                                        ? Container(
-                                            decoration: BoxDecoration(
-                                              color: theme
-                                                  .colorScheme.primaryContainer
-                                                  .withOpacity(0.5),
-                                              border: Border.all(
-                                                color: theme
-                                                    .colorScheme.background,
-                                                width: 0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      66 / row.length),
-                                            ),
-                                            width: 270 / row.length,
-                                            height: 270 / row.length,
-                                          )
-                                        : Material(
+              },
+              child: BlocBuilder<GameBloc, Game>(
+                builder: (context, game) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: ConfettiWidget(
+                              minimumSize: const Size(5, 5),
+                              maximumSize: const Size(10, 10),
+                              blastDirection: 3.14 * 2,
+                              confettiController: confettiControllerLeft)),
+                      Align(
+                          alignment: Alignment.centerRight,
+                          child: ConfettiWidget(
+                              minimumSize: const Size(5, 5),
+                              maximumSize: const Size(10, 10),
+                              blastDirection: 3.14,
+                              confettiController: confettiControllerRight)),
+                      Column(
+                          children: game.pieces.map((row) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: row.map((piece) {
+                            return Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: Animate(
+                                value: -piece.value.toDouble().abs(),
+                                effects: const [ShakeEffect()],
+                                child: Material(
+                                  elevation: 1,
+                                  borderRadius:
+                                      BorderRadius.circular(66 / row.length),
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: theme.colorScheme.background,
+                                  surfaceTintColor: Colors.transparent,
+                                  type: MaterialType.card,
+                                  child: piece.value == 0
+                                      ? Container(
+                                          decoration: BoxDecoration(
                                             color: theme
-                                                .colorScheme.primaryContainer,
-                                            child: GestureDetector(
-                                              onPanEnd: (details) {
+                                                .colorScheme.primaryContainer
+                                                .withOpacity(0.5),
+                                            border: Border.all(
+                                              color:
+                                                  theme.colorScheme.background,
+                                              width: 0,
+                                            ),
+                                            borderRadius: BorderRadius.circular(
+                                                66 / row.length),
+                                          ),
+                                          width: 270 / row.length,
+                                          height: 270 / row.length,
+                                        )
+                                      : Material(
+                                          color: theme
+                                              .colorScheme.primaryContainer,
+                                          child: GestureDetector(
+                                            onPanEnd: (details) {
+                                              context.read<GameBloc>().add(
+                                                  GamePieceMoved(piece: piece));
+                                            },
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              onTap: () {
                                                 context.read<GameBloc>().add(
                                                     GamePieceMoved(
                                                         piece: piece));
                                               },
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                onTap: () {
-                                                  context.read<GameBloc>().add(
-                                                      GamePieceMoved(
-                                                          piece: piece));
-                                                },
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: piece.isCorrect(
-                                                              game.boardSize)
-                                                          ? theme.colorScheme
-                                                              .primary
-                                                          : theme.colorScheme
-                                                              .background,
-                                                      width: piece.isCorrect(
-                                                              game.boardSize)
-                                                          ? 2
-                                                          : 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            66 / row.length),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: piece.isCorrect(
+                                                            game.boardSize)
+                                                        ? theme
+                                                            .colorScheme.primary
+                                                        : theme.colorScheme
+                                                            .background,
+                                                    width: piece.isCorrect(
+                                                            game.boardSize)
+                                                        ? 2
+                                                        : 0,
                                                   ),
-                                                  width: 270 / row.length,
-                                                  height: 270 / row.length,
-                                                  child: Center(
-                                                    child: Text(
-                                                        piece.value.toString(),
-                                                        style: theme.textTheme
-                                                            .bodyMedium!
-                                                            .copyWith(
-                                                          fontSize: 270 /
-                                                              row.length /
-                                                              2.5,
-                                                        )),
-                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          66 / row.length),
+                                                ),
+                                                width: 270 / row.length,
+                                                height: 270 / row.length,
+                                                child: Center(
+                                                  child: Text(
+                                                      piece.value.toString(),
+                                                      style: theme
+                                                          .textTheme.bodyMedium!
+                                                          .copyWith(
+                                                        fontSize: 270 /
+                                                            row.length /
+                                                            2.5,
+                                                      )),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                  ),
+                                        ),
                                 ),
-                              );
-                            }).toList(),
-                          );
-                        }).toList()),
-                        const SizedBox(height: 30),
-                        Wrap(
-                          spacing: 30,
-                          runSpacing: 15,
-                          alignment: WrapAlignment.center,
-                          children: [
-                            Tooltip(
-                              waitDuration: const Duration(seconds: 1),
-                              message: locale.shuffle,
-                              child: ElevatedButton(
-                                  onPressed: () => context
-                                      .read<GameBloc>()
-                                      .add(GameShuffled()),
-                                  child: const Icon(Icons.shuffle)),
-                            ),
-                            Tooltip(
-                              waitDuration: const Duration(seconds: 1),
-                              message: locale.increase,
-                              child: ElevatedButton(
-                                  onPressed: () => context
-                                      .read<GameBloc>()
-                                      .add(GameSizeIncreased()),
-                                  child: const Icon(Icons.add)),
-                            ),
-                            Tooltip(
-                              waitDuration: const Duration(seconds: 1),
-                              message: locale.decrease,
-                              child: ElevatedButton(
-                                  onPressed: () => context
-                                      .read<GameBloc>()
-                                      .add(GameSizeDecreased()),
-                                  child: const Icon(Icons.remove)),
-                            ),
-                            BlocProvider(
-                              lazy: true,
-                              create: (context) => ProfileBloc(),
-                              child: BlocBuilder<ProfileBloc, Profile>(
-                                builder: (context, profile) => Visibility(
-                                  replacement: Container(),
-                                  visible: profile.isCheater(),
-                                  child: Tooltip(
-                                    waitDuration: const Duration(seconds: 1),
-                                    message: locale.cheat,
-                                    child: ElevatedButton(
-                                        onPressed: () => context
-                                            .read<GameBloc>()
-                                            .add(GameCheatActivated()),
-                                        child: const Icon(Icons.lightbulb)),
-                                  ),
+                              ),
+                            );
+                          }).toList(),
+                        );
+                      }).toList()),
+                      const SizedBox(height: 30),
+                      Wrap(
+                        spacing: 30,
+                        runSpacing: 15,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          Tooltip(
+                            waitDuration: const Duration(seconds: 1),
+                            message: locale.shuffle,
+                            child: ElevatedButton(
+                                onPressed: () => context
+                                    .read<GameBloc>()
+                                    .add(GameShuffled()),
+                                child: const Icon(Icons.shuffle)),
+                          ),
+                          Tooltip(
+                            waitDuration: const Duration(seconds: 1),
+                            message: locale.increase,
+                            child: ElevatedButton(
+                                onPressed: () => context
+                                    .read<GameBloc>()
+                                    .add(GameSizeIncreased()),
+                                child: const Icon(Icons.add)),
+                          ),
+                          Tooltip(
+                            waitDuration: const Duration(seconds: 1),
+                            message: locale.decrease,
+                            child: ElevatedButton(
+                                onPressed: () => context
+                                    .read<GameBloc>()
+                                    .add(GameSizeDecreased()),
+                                child: const Icon(Icons.remove)),
+                          ),
+                          BlocProvider(
+                            lazy: true,
+                            create: (context) => ProfileBloc(),
+                            child: BlocBuilder<ProfileBloc, Profile>(
+                              builder: (context, profile) => Visibility(
+                                replacement: Container(),
+                                visible: profile.isCheater(),
+                                child: Tooltip(
+                                  waitDuration: const Duration(seconds: 1),
+                                  message: locale.cheat,
+                                  child: ElevatedButton(
+                                      onPressed: () => context
+                                          .read<GameBloc>()
+                                          .add(GameCheatActivated()),
+                                      child: const Icon(Icons.lightbulb)),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ],

@@ -41,6 +41,7 @@ class StatisticsBloc extends HydratedBloc<StatisticsEvent, Statistics> {
         StatisticEntry(
             date: event.date, boardSize: event.boardSize, moves: event.moves),
       ];
+      entries.sort((a, b) => a.date.compareTo(b.date));
       emit(Statistics(entries: entries));
     });
   }
