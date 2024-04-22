@@ -112,11 +112,10 @@ ${locale.helpBodyFourth}\n""",
             ],
           ),
           const SizedBox(height: 90),
-          BlocProvider(
-            lazy: false,
-            create: (context) => StatisticsBloc(),
-            child: BlocProvider(
-              lazy: false,
+          BlocBuilder<StatisticsBloc, Statistics>(
+              builder: (context, statistics) {
+            return BlocProvider(
+              lazy: true,
               create: (context) => GameBloc(),
               child: BlocListener<GameBloc, Game>(
                 listener: (context, game) {
@@ -125,7 +124,7 @@ ${locale.helpBodyFourth}\n""",
                     confettiControllerRight.play();
 
                     context.read<StatisticsBloc>().add(StatisticsGameRecorded(
-                        boardSize: game.boardSize, moves: game.moves));
+                        moves: game.moves, boardSize: game.boardSize));
 
                     // Hide current snackbar if any is visible
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -313,7 +312,7 @@ ${locale.helpBodyFourth}\n""",
                                   child: const Icon(Icons.remove)),
                             ),
                             BlocProvider(
-                              lazy: false,
+                              lazy: true,
                               create: (context) => ProfileBloc(),
                               child: BlocBuilder<ProfileBloc, Profile>(
                                 builder: (context, profile) => Visibility(
@@ -338,8 +337,8 @@ ${locale.helpBodyFourth}\n""",
                   },
                 ),
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );

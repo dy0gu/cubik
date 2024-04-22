@@ -25,6 +25,7 @@ class Statistics extends Equatable {
 sealed class StatisticsEvent {}
 
 class StatisticsGameRecorded extends StatisticsEvent {
+  final DateTime date = DateTime.now();
   final int boardSize;
   final int moves;
 
@@ -39,9 +40,7 @@ class StatisticsBloc extends HydratedBloc<StatisticsEvent, Statistics> {
           ? state.entries.sublist(1)
           : state.entries;
       entries.add(StatisticEntry(
-          date: DateTime.now(),
-          boardSize: event.boardSize,
-          moves: event.moves));
+          date: event.date, boardSize: event.boardSize, moves: event.moves));
       emit(Statistics(entries: entries));
     });
   }
