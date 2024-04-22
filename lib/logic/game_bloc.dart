@@ -61,7 +61,7 @@ class GameSizeDecreased extends GameEvent {}
 
 class GameCheatActivated extends GameEvent {}
 
-class GameBloc extends Bloc<GameEvent, Game> {
+class GameBloc extends HydratedBloc<GameEvent, Game> {
   GameBloc() : super(Game(pieces: generate(3), boardSize: 3, moves: 0)) {
     on<GameShuffled>((event, emit) {
       emit(Game(
@@ -131,6 +131,45 @@ class GameBloc extends Bloc<GameEvent, Game> {
           boardSize: state.boardSize,
           moves: Random.secure().nextInt(100) + 15));
     });
+  }
+
+  @override
+  Game fromJson(Map<String, dynamic> json) {
+    if (json["pieces"] is List && json["size"] is int) {
+      return Game(
+          boardSize: json["size"] as int,
+          pieces: (json["pieces"] as List)
+              .map((row) => (row as List)
+                  .map((piece) => GamePiece(
+                      value: piece["value"] as int,
+                      position: GamePiecePosition(
+                          row: piece["position"]["row"] as int,
+                          column: piece["position"]["column"] as int)))
+                  .toList())
+              .toList(),
+          moves: json["moves"] as int);
+    } else {
+      return Game(pieces: generate(3), boardSize: 3, moves: 0);
+    }
+  }
+
+  @override
+  Map<String, dynamic> toJson(Game state) {
+    return <String, dynamic>{
+      "pieces": state.pieces
+          .map((row) => row
+              .map((piece) => {
+                    "value": piece.value,
+                    "position": {
+                      "row": piece.position.row,
+                      "column": piece.position.column
+                    }
+                  })
+              .toList())
+          .toList(),
+      "size": state.boardSize,
+      "moves": state.moves
+    };
   }
 }
 

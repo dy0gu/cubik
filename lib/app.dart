@@ -22,7 +22,7 @@ class App extends StatelessWidget {
             create: (context) => SettingsBloc(),
           ),
           BlocProvider<StatisticsBloc>(
-            lazy: true,
+            lazy: false,
             create: (context) => StatisticsBloc(),
           ),
           BlocProvider<ProfileBloc>(

@@ -36,11 +36,11 @@ class StatisticsBloc extends HydratedBloc<StatisticsEvent, Statistics> {
   StatisticsBloc() : super(const Statistics()) {
     on<StatisticsGameRecorded>((event, emit) {
       // Limit the number of games tracked to 1000
-      final entries = state.entries.length >= 1000
-          ? state.entries.sublist(1)
-          : state.entries;
-      entries.add(StatisticEntry(
-          date: event.date, boardSize: event.boardSize, moves: event.moves));
+      final entries = [
+        ...state.entries.reversed.take(999),
+        StatisticEntry(
+            date: event.date, boardSize: event.boardSize, moves: event.moves),
+      ];
       emit(Statistics(entries: entries));
     });
   }
