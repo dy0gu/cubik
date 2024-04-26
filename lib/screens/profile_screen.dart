@@ -183,7 +183,7 @@ ${locale.time}: ${entry.date.hour.toString().padLeft(2, '0')}:${entry.date.minut
                                         );
                                       }).toList();
                                     },
-                                    tooltipBgColor:
+                                    getTooltipColor: (LineBarSpot group) =>
                                         theme.colorScheme.primaryContainer,
                                   ),
                                 ),
