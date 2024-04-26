@@ -23,7 +23,7 @@ dependencies:
   equatable: ^2.0.5
   go_router: ^13.1.0
   image_picker: ^1.0.7
-  fl_chart: ^0.65.0
+  fl_chart: ^0.67.0
   cupertino_icons: ^1.0.6
   confetti: ^0.7.0
   share_plus: ^7.2.2
