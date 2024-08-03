@@ -8,6 +8,8 @@ jobs:
   all:
     runs-on: ubuntu-latest
     steps:
-      - uses: vhanda/flutter-build-runner-action@v1
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
       - name: Run Flutter tests
         run: flutter analyze
