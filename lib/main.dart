@@ -6,7 +6,7 @@ import "package:path_provider/path_provider.dart";
 import "package:flutter/foundation.dart";
 
 void main() async {
-  // Ensures that the Flutter Widgets library is initialized before any Flutter code runs
+  // Ensures that all widget render logic is initialized before continuing
   WidgetsFlutterBinding.ensureInitialized();
 
   // Hides the # in the web version URL
@@ -19,6 +19,5 @@ void main() async {
         : await getTemporaryDirectory(),
   );
 
-  // Start the app
   runApp(const App());
 }
