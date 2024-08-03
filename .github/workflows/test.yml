@@ -13,4 +13,4 @@ jobs:
           channel: stable
       - run: flutter config --no-cli-animations
       - name: Run Flutter tests
-        run: flutter analyze
+        run: flutter test
