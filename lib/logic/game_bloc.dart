@@ -2,6 +2,10 @@ import "package:hydrated_bloc/hydrated_bloc.dart";
 import "dart:math";
 import "package:equatable/equatable.dart";
 
+const defaultBoardSize = 3;
+const minBoardSize = 3;
+const maxBoardSize = 5;
+
 class GamePiecePosition extends Equatable {
   final int row;
   final int column;
@@ -61,8 +65,13 @@ class GameSizeDecreased extends GameEvent {}
 
 class GameCheatActivated extends GameEvent {}
 
+/// State machine for the game.
 class GameBloc extends HydratedBloc<GameEvent, Game> {
-  GameBloc() : super(Game(pieces: generate(3), boardSize: 3, moves: 0)) {
+  GameBloc()
+      : super(Game(
+            pieces: generate(defaultBoardSize),
+            boardSize: defaultBoardSize,
+            moves: 0)) {
     on<GameShuffled>((event, emit) {
       emit(Game(
           pieces: generate(state.boardSize),
@@ -70,7 +79,7 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
           moves: 0));
     });
     on<GameSizeIncreased>((event, emit) {
-      if (state.boardSize < 5) {
+      if (state.boardSize < maxBoardSize) {
         emit(Game(
             pieces: generate(state.boardSize + 1),
             boardSize: state.boardSize + 1,
@@ -78,7 +87,7 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
       }
     });
     on<GameSizeDecreased>((event, emit) {
-      if (state.boardSize > 3) {
+      if (state.boardSize > minBoardSize) {
         emit(Game(
             pieces: generate(state.boardSize - 1),
             boardSize: state.boardSize - 1,
@@ -149,7 +158,10 @@ class GameBloc extends HydratedBloc<GameEvent, Game> {
               .toList(),
           moves: json["moves"] as int);
     } else {
-      return Game(pieces: generate(3), boardSize: 3, moves: 0);
+      return Game(
+          pieces: generate(defaultBoardSize),
+          boardSize: defaultBoardSize,
+          moves: 0);
     }
   }
 

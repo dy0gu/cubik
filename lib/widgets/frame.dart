@@ -3,10 +3,10 @@ import "package:flutter/material.dart";
 /// Wraps [child] with a [Scaffold], [SafeArea], and [Padding].
 ///
 /// Intended to be a base wrap in all app screens, for universal consistency and ease of use.
-class Framed extends StatelessWidget {
+class Frame extends StatelessWidget {
   final Widget child;
 
-  const Framed({
+  const Frame({
     super.key,
     required this.child,
   });

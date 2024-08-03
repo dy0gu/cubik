@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
-import "package:cubik/widgets/framed.dart";
+import "package:cubik/widgets/frame.dart";
 import "package:cubik/logic/game_bloc.dart";
 import "package:flutter_animate/flutter_animate.dart";
 import "package:share_plus/share_plus.dart";
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         ConfettiController(duration: const Duration(seconds: 5));
     ConfettiController confettiControllerRight =
         ConfettiController(duration: const Duration(seconds: 5));
-    return Framed(
+    return Frame(
       child: Column(
         children: [
           Row(
@@ -198,7 +198,7 @@ ${locale.helpBodyFourth}\n""",
                                   borderRadius:
                                       BorderRadius.circular(66 / row.length),
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: theme.colorScheme.background,
+                                  color: theme.colorScheme.surface,
                                   surfaceTintColor: Colors.transparent,
                                   type: MaterialType.card,
                                   child: piece.value == 0
@@ -208,8 +208,7 @@ ${locale.helpBodyFourth}\n""",
                                                 .colorScheme.primaryContainer
                                                 .withOpacity(0.5),
                                             border: Border.all(
-                                              color:
-                                                  theme.colorScheme.background,
+                                              color: theme.colorScheme.surface,
                                               width: 0,
                                             ),
                                             borderRadius: BorderRadius.circular(
@@ -241,7 +240,7 @@ ${locale.helpBodyFourth}\n""",
                                                         ? theme
                                                             .colorScheme.primary
                                                         : theme.colorScheme
-                                                            .background,
+                                                            .surface,
                                                     width: piece.isCorrect(
                                                             game.boardSize)
                                                         ? 2

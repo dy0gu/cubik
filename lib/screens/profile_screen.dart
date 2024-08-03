@@ -6,7 +6,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:cubik/logic/profile_bloc.dart";
-import "package:cubik/widgets/framed.dart";
+import "package:cubik/widgets/frame.dart";
 import "package:fl_chart/fl_chart.dart";
 
 class ProfileScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations locale = AppLocalizations.of(context)!;
     ThemeData theme = Theme.of(context);
-    return Framed(
+    return Frame(
       child: Column(children: [
         Row(
           children: [
