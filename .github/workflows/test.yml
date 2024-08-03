@@ -1,0 +1,13 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  all:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vhanda/flutter-build-runner-action@v1
+      - name: Run Flutter tests
+        run: flutter analyze
