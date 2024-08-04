@@ -31,6 +31,7 @@ class ProfileUsernameChanged extends ProfileEvent {
 
 class ProfilePictureUploaded extends ProfileEvent {}
 
+/// User state manager and storage.
 class ProfileBloc extends HydratedBloc<ProfileEvent, Profile> {
   ProfileBloc() : super(const Profile()) {
     on<ProfileUsernameChanged>((event, emit) {
