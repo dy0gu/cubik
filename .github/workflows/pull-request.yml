@@ -1,11 +1,11 @@
-name: commit
+name: pull-request
 
 on:
   pull_request:
-    types: [synchronize]
+    types: [opened, edited]
 
 jobs:
-  check:
+  title:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,5 +15,5 @@ jobs:
       - run: flutter config --no-cli-animations
       - name: Install dependencies
         run: flutter pub get
-      - name: Run commitlint on all PR commits
-        run: dart run commitlint_cli --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
+      - name: Run commitlint on PR title
+        run: dart run commitlint_cli ${{ github.event.pull_request.title }}

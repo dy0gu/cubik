@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  dart:
+  github:
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@v4
