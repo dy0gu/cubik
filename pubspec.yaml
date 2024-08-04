@@ -39,6 +39,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.1
   husky: ^0.1.7
+  commitlint_cli: ^0.7.1
 
 flutter:
   uses-material-design: true
