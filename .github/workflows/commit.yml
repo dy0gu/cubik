@@ -2,6 +2,7 @@ name: commit
 
 on:
   pull_request:
+    types: [synchronize]
 
 jobs:
   check:
