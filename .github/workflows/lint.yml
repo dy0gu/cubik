@@ -15,5 +15,7 @@ jobs:
       - run: flutter config --no-cli-animations
       - name: Install dependencies
         run: flutter pub get
+      - name: Generate i18n files
+        run: flutter gen-l10n
       - name: Run Flutter linter
         run: flutter analyze
