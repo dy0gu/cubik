@@ -18,6 +18,12 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   flutter pub get
   ```
 
+- Install git hooks:
+
+  ```shell
+  dart run husky install
+  ```
+
 - Generate the localization files:
 
   ```shell
