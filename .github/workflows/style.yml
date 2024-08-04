@@ -1,4 +1,4 @@
-name: lint
+name: format
 
 on:
   push:
@@ -15,5 +15,5 @@ jobs:
       - run: flutter config --no-cli-animations
       - name: Install dependencies
         run: flutter pub get
-      - name: Run Flutter linter
-        run: flutter analyze
+      - name: Run Dart formatter
+        run: dart format -o none --set-exit-if-changed .
