@@ -16,4 +16,4 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Run commitlint on PR title
-        run: dart run commitlint_cli ${{ github.event.pull_request.title }}
+        run: echo "${{ github.event.pull_request.title }}" | dart run commitlint_cli
