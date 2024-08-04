@@ -9,7 +9,6 @@ import "package:cubik/router/router_config.dart";
 import "package:cubik/utils//brightness_extension.dart";
 import "package:cubik/utils/theme_mode_extension.dart";
 
-/// The main application widget.
 class App extends StatelessWidget {
   const App({super.key});
 
