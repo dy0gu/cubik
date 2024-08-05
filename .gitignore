@@ -1,3 +1,17 @@
+# IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Environment
+.env
+!.env.example
+key.properties
+!key.properties.example
+upload-keystore.jks
+
 # Miscellaneous
 *.class
 *.log
@@ -9,15 +23,6 @@
 .history
 .svn/
 migrate_working_dir/
-
-# IntelliJ
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# VSCode
-.vscode/
 
 # Flutter/Dart/Pub
 **/doc/api/
@@ -35,7 +40,7 @@ app.*.symbols
 # Obfuscation
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Android Studio
 /android/app/debug
 /android/app/profile
 /android/app/release

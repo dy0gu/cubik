@@ -1,0 +1,4 @@
+storePassword=keytool-password
+keyPassword=keytool-password
+keyAlias=upload
+storeFile=keystore-file-location
