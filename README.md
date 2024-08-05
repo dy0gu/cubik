@@ -4,7 +4,7 @@
 
 Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the numbers in ascending order by moving the pieces through the empty space. It seeks to expand on the original concept by using varying board sizes and statistics tracking.
 
-## Installation 🛠️
+## Development 🛠️
 
 - Clone the repository:
 
@@ -30,10 +30,12 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   flutter gen-l10n
   ```
 
-## Usage 💻
-
 - Run the app on your platform of choice:
 
   ```shell
   flutter run
   ```
+
+## Build & Deployment 🚀
+
+- TODO
