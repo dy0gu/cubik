@@ -31,7 +31,8 @@ class ErrorScreen extends StatelessWidget {
           const SizedBox(height: 60),
           Icon(Icons.error, size: 60, color: theme.colorScheme.onSurface),
           const SizedBox(height: 15),
-          Text(locale.pageError, style: theme.textTheme.bodyLarge),
+          Text(locale.pageError,
+              style: theme.textTheme.bodyLarge, textAlign: TextAlign.center),
         ],
       ),
     );

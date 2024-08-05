@@ -32,7 +32,8 @@ class NotFoundScreen extends StatelessWidget {
           Icon(Icons.device_unknown,
               size: 60, color: theme.colorScheme.onSurface),
           const SizedBox(height: 15),
-          Text(locale.pageNotFound, style: theme.textTheme.bodyLarge),
+          Text(locale.pageNotFound,
+              style: theme.textTheme.bodyLarge, textAlign: TextAlign.center),
         ],
       ),
     );
