@@ -64,68 +64,90 @@ ${locale.helpBodyFourth}\n""",
                                     ),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [
-                                      Tooltip(
-                                        waitDuration:
-                                            const Duration(seconds: 1),
-                                        message: locale.back,
-                                        child: ElevatedButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            child: const Icon(
-                                              Icons.arrow_back,
-                                            )),
+                                      Wrap(
+                                        spacing: 10,
+                                        runSpacing: 10,
+                                        children: [
+                                          Wrap(
+                                            spacing: 10,
+                                            runSpacing: 10,
+                                            children: [
+                                              Tooltip(
+                                                waitDuration:
+                                                    const Duration(seconds: 1),
+                                                message: locale.back,
+                                                child: ElevatedButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(context),
+                                                    child: const Icon(
+                                                      Icons.arrow_back,
+                                                    )),
+                                              ),
+                                              Tooltip(
+                                                  waitDuration: const Duration(
+                                                      seconds: 1),
+                                                  message: "Github",
+                                                  child: ElevatedButton(
+                                                      child: const Icon(
+                                                          SimpleIcons.github),
+                                                      onPressed: () async {
+                                                        if (!await launchUrl(
+                                                            Uri.parse(
+                                                                "https://github.com/dy0gu/cubik"),
+                                                            mode: LaunchMode
+                                                                .platformDefault,
+                                                            webOnlyWindowName:
+                                                                "_blank")) {}
+                                                      })),
+                                            ],
+                                          ),
+                                          if (kIsWeb ||
+                                              !Platform.isAndroid &&
+                                                  !Platform.isIOS) ...[
+                                            Wrap(
+                                              spacing: 10,
+                                              runSpacing: 10,
+                                              children: [
+                                                Tooltip(
+                                                    waitDuration:
+                                                        const Duration(
+                                                            seconds: 1),
+                                                    message: "Google Play",
+                                                    child: ElevatedButton(
+                                                        child: const Icon(
+                                                            SimpleIcons
+                                                                .googleplay),
+                                                        onPressed: () async {
+                                                          if (!await launchUrl(
+                                                              Uri.parse(
+                                                                  "https://play.google.com/store/apps/details?id=com.dy0gu.cubik"),
+                                                              mode: LaunchMode
+                                                                  .platformDefault,
+                                                              webOnlyWindowName:
+                                                                  "_blank")) {}
+                                                        })),
+                                                Tooltip(
+                                                    waitDuration:
+                                                        const Duration(
+                                                            seconds: 1),
+                                                    message: "App Store",
+                                                    child: ElevatedButton(
+                                                        child: const Icon(
+                                                            SimpleIcons
+                                                                .appstore),
+                                                        onPressed: () async {
+                                                          if (!await launchUrl(
+                                                              Uri.parse(""),
+                                                              mode: LaunchMode
+                                                                  .platformDefault,
+                                                              webOnlyWindowName:
+                                                                  "_blank")) {}
+                                                        })),
+                                              ],
+                                            ),
+                                          ],
+                                        ],
                                       ),
-                                      if (kIsWeb ||
-                                          !Platform.isAndroid &&
-                                              !Platform.isIOS) ...[
-                                        Tooltip(
-                                            waitDuration:
-                                                const Duration(seconds: 1),
-                                            message: "Google Play",
-                                            child: ElevatedButton(
-                                                child: const Icon(
-                                                    SimpleIcons.googleplay),
-                                                onPressed: () async {
-                                                  if (!await launchUrl(
-                                                      Uri.parse(
-                                                          "https://play.google.com/store/apps/details?id=com.dy0gu.cubik"),
-                                                      mode: LaunchMode
-                                                          .platformDefault,
-                                                      webOnlyWindowName:
-                                                          "_blank")) {}
-                                                })),
-                                        Tooltip(
-                                            waitDuration:
-                                                const Duration(seconds: 1),
-                                            message: "App Store",
-                                            child: ElevatedButton(
-                                                child: const Icon(
-                                                    SimpleIcons.appstore),
-                                                onPressed: () async {
-                                                  if (!await launchUrl(
-                                                      Uri.parse(""),
-                                                      mode: LaunchMode
-                                                          .platformDefault,
-                                                      webOnlyWindowName:
-                                                          "_blank")) {}
-                                                })),
-                                      ],
-                                      Tooltip(
-                                          waitDuration:
-                                              const Duration(seconds: 1),
-                                          message: "Github",
-                                          child: ElevatedButton(
-                                              child: const Icon(
-                                                  SimpleIcons.github),
-                                              onPressed: () async {
-                                                if (!await launchUrl(
-                                                    Uri.parse(
-                                                        "https://github.com/dy0gu/cubik"),
-                                                    mode: LaunchMode
-                                                        .platformDefault,
-                                                    webOnlyWindowName:
-                                                        "_blank")) {}
-                                              })),
                                     ],
                                   ))),
                     ),
@@ -161,7 +183,6 @@ ${locale.helpBodyFourth}\n""",
                   context.read<StatisticsBloc>().add(StatisticsGameRecorded(
                       moves: game.moves, boardSize: game.boardSize));
 
-                  // Hide current snackbar if any is visible
                   ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
