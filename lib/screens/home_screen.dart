@@ -11,6 +11,8 @@ import "package:flutter_animate/flutter_animate.dart";
 import "package:share_plus/share_plus.dart";
 import "package:url_launcher/url_launcher.dart";
 import "package:simple_icons/simple_icons.dart";
+import "dart:io" show Platform;
+import "package:flutter/foundation.dart" show kIsWeb;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -73,6 +75,41 @@ ${locale.helpBodyFourth}\n""",
                                               Icons.arrow_back,
                                             )),
                                       ),
+                                      if (kIsWeb ||
+                                          !Platform.isAndroid &&
+                                              !Platform.isIOS) ...[
+                                        Tooltip(
+                                            waitDuration:
+                                                const Duration(seconds: 1),
+                                            message: "Google Play",
+                                            child: ElevatedButton(
+                                                child: const Icon(
+                                                    SimpleIcons.googleplay),
+                                                onPressed: () async {
+                                                  if (!await launchUrl(
+                                                      Uri.parse(
+                                                          "https://play.google.com/store/apps/details?id=com.dy0gu.cubik"),
+                                                      mode: LaunchMode
+                                                          .platformDefault,
+                                                      webOnlyWindowName:
+                                                          "_blank")) {}
+                                                })),
+                                        Tooltip(
+                                            waitDuration:
+                                                const Duration(seconds: 1),
+                                            message: "App Store",
+                                            child: ElevatedButton(
+                                                child: const Icon(
+                                                    SimpleIcons.appstore),
+                                                onPressed: () async {
+                                                  if (!await launchUrl(
+                                                      Uri.parse(""),
+                                                      mode: LaunchMode
+                                                          .platformDefault,
+                                                      webOnlyWindowName:
+                                                          "_blank")) {}
+                                                })),
+                                      ],
                                       Tooltip(
                                           waitDuration:
                                               const Duration(seconds: 1),
@@ -83,7 +120,7 @@ ${locale.helpBodyFourth}\n""",
                                               onPressed: () async {
                                                 if (!await launchUrl(
                                                     Uri.parse(
-                                                        "https://github.com/dy0gu/Cubik"),
+                                                        "https://github.com/dy0gu/cubik"),
                                                     mode: LaunchMode
                                                         .platformDefault,
                                                     webOnlyWindowName:
@@ -127,41 +164,39 @@ ${locale.helpBodyFourth}\n""",
                   // Hide current snackbar if any is visible
                   ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-                  Future.delayed(const Duration(milliseconds: 500), () {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      duration: const Duration(seconds: 8),
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      content: Text.rich(
-                        TextSpan(
-                          text: locale.winPopup(game.moves),
-                          style: theme.textTheme.bodyLarge,
-                          children: [
-                            const WidgetSpan(child: SizedBox(width: 5)),
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: Tooltip(
-                                waitDuration: const Duration(seconds: 1),
-                                message: locale.share,
-                                child: SizedBox(
-                                  height: 35,
-                                  width: 40,
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(35),
-                                    onTap: () => Share.share(
-                                      subject: locale.shareBody(game.moves),
-                                      locale.shareBody(game.moves),
-                                    ),
-                                    child: const Icon(Icons.share),
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    duration: const Duration(seconds: 8),
+                    backgroundColor: theme.colorScheme.primaryContainer,
+                    content: Text.rich(
+                      TextSpan(
+                        text: locale.winPopup(game.moves),
+                        style: theme.textTheme.bodyLarge,
+                        children: [
+                          const WidgetSpan(child: SizedBox(width: 5)),
+                          WidgetSpan(
+                            alignment: PlaceholderAlignment.middle,
+                            child: Tooltip(
+                              waitDuration: const Duration(seconds: 1),
+                              message: locale.share,
+                              child: SizedBox(
+                                height: 35,
+                                width: 40,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(35),
+                                  onTap: () => Share.share(
+                                    subject: locale.shareBody(game.moves),
+                                    locale.shareBody(game.moves),
                                   ),
+                                  child: const Icon(Icons.share),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
-                    ));
-                  });
+                      textAlign: TextAlign.center,
+                    ),
+                  ));
                 }
               },
               child: BlocBuilder<GameBloc, Game>(

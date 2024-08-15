@@ -1,5 +1,4 @@
-name: format
-
+name: style
 on:
   push:
     branches: [main]
