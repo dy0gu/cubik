@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1](https://github.com/dy0gu/cubik/compare/v1.0.0...v1.0.1) (2024-08-16)
+
+
+### Bug Fixes
+
+* remove context usage across async gaps ([057ba07](https://github.com/dy0gu/cubik/commit/057ba07fb8e5d90d9c264d40097b836876422935))
+* remove redundant frame wraps ([6ea5326](https://github.com/dy0gu/cubik/commit/6ea53267b8d0abcb8fb0c8524bb00a359f734a0c))
+* update button layout for help dialog ([0f6aecc](https://github.com/dy0gu/cubik/commit/0f6aecc0a3129751dd5a078bb7951a9520ecda80))
+
 ## 1.0.0 (2024-08-05)
 
 
