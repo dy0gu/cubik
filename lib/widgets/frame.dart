@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 
-/// Wraps [child] with a [Scaffold], [SafeArea], and [Padding].
-///
-/// Intended to be a base wrap in all app screens, for universal consistency and ease of use.
+/// Intended to be a base wrapper around all app screens, although not as a navbar, since
+/// navigation buttons are made on a per screen basis due to the low screen complexity.
 class Frame extends StatelessWidget {
   final Widget child;
 

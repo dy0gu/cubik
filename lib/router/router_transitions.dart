@@ -3,7 +3,6 @@ import "package:go_router/go_router.dart";
 
 /// Custom transition disabler to be used with a [Router] page builder.
 CustomTransitionPage noTransitionBuilder<T>({
-  required BuildContext context,
   required GoRouterState state,
   required Widget child,
 }) {
@@ -17,7 +16,6 @@ CustomTransitionPage noTransitionBuilder<T>({
 
 /// Custom fade transition builder to be used with a [Router] page builder.
 CustomTransitionPage fadeTransitionBuilder<T>({
-  required BuildContext context,
   required GoRouterState state,
   required Widget child,
 }) {
@@ -31,7 +29,6 @@ CustomTransitionPage fadeTransitionBuilder<T>({
 
 /// Custom rotation transition builder to be used with a [Router] page builder.
 CustomTransitionPage rotationTransitionBuilder<T>({
-  required BuildContext context,
   required GoRouterState state,
   required Widget child,
 }) {
@@ -48,7 +45,6 @@ CustomTransitionPage rotationTransitionBuilder<T>({
 
 /// Custom slide transition builder to be used with a [Router] page builder.
 CustomTransitionPage slideTransitionBuilder<T>({
-  required BuildContext context,
   required GoRouterState state,
   required Widget child,
 }) {
@@ -68,7 +64,6 @@ CustomTransitionPage slideTransitionBuilder<T>({
 
 /// Custom scale transition builder to be used with a [Router] page builder.
 CustomTransitionPage scaleTransitionBuilder<T>({
-  required BuildContext context,
   required GoRouterState state,
   required Widget child,
 }) {

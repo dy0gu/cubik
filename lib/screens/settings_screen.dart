@@ -3,7 +3,6 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:cubik/logic/settings_bloc.dart";
-import "package:cubik/widgets/frame.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -12,8 +11,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations locale = AppLocalizations.of(context)!;
     ThemeData theme = Theme.of(context);
-    return Frame(
-        child: Column(children: [
+    return Column(children: [
       Row(
         children: [
           Expanded(
@@ -309,6 +307,6 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
-    ]));
+    ]);
   }
 }
