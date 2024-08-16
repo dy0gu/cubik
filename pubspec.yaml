@@ -4,7 +4,7 @@ description: "Yet another web game!"
 # Prevent accidental publishing to pub.dev
 publish_to: "none"
 
-version: 1.0.0+2
+version: 1.0.1+3
 
 environment:
   sdk: ">=3.2.5"
