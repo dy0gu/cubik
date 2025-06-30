@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/dy0gu/cubik/compare/v1.0.1...v2.0.0) (2025-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump flutter to lastest version
+
+### Features
+
+* bump flutter to lastest version ([8115d53](https://github.com/dy0gu/cubik/commit/8115d5317a1fd7eeee217e9393557d4eb7a238ed))
+
 ## [1.0.1](https://github.com/dy0gu/cubik/compare/v1.0.0...v1.0.1) (2024-08-16)
 
 
