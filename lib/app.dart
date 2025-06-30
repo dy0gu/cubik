@@ -1,7 +1,7 @@
 import "package:cubik/logic/profile_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:cubik/l10n/app_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:cubik/logic/settings_bloc.dart";
 import "package:cubik/logic/stats_bloc.dart";

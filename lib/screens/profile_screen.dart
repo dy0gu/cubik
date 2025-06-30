@@ -4,7 +4,7 @@ import "package:cubik/logic/stats_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
-import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:cubik/l10n/app_localizations.dart";
 import "package:cubik/logic/profile_bloc.dart";
 import "package:fl_chart/fl_chart.dart";
 
@@ -156,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
                                   belowBarData: BarAreaData(
                                     show: true,
                                     color: theme.colorScheme.primary
-                                        .withOpacity(0.3),
+                                        .withValues(alpha: 0.5),
                                   ),
                                 ),
                               ],
@@ -189,7 +189,7 @@ class ProfileScreen extends StatelessWidget {
                                 getDrawingHorizontalLine: (value) {
                                   return FlLine(
                                     color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
+                                        .withValues(alpha: 0.5),
                                     strokeWidth: 1,
                                     dashArray: [5, 5],
                                   );
@@ -197,7 +197,7 @@ class ProfileScreen extends StatelessWidget {
                                 getDrawingVerticalLine: (value) {
                                   return FlLine(
                                     color: theme.colorScheme.primary
-                                        .withOpacity(0.4),
+                                        .withValues(alpha: 0.4),
                                     strokeWidth: 1,
                                     dashArray: [5, 5],
                                   );

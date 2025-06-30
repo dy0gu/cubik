@@ -1,4 +1,5 @@
 # Customize the parameters and run: dart run flutter_launcher_icons
+# Recommendation for creating icons: https://icon.kitchen
 
 flutter_launcher_icons:
   android: true

@@ -3,7 +3,7 @@ import "package:cubik/logic/profile_bloc.dart";
 import "package:cubik/logic/stats_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:cubik/l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
 import "package:cubik/logic/game_bloc.dart";
 import "package:flutter_animate/flutter_animate.dart";
@@ -257,7 +257,7 @@ class HomeScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: theme
                                               .colorScheme.primaryContainer
-                                              .withOpacity(0.5),
+                                              .withValues(alpha: 0.5),
                                           border: Border.all(
                                             color: theme.colorScheme.surface,
                                             width: 0,
