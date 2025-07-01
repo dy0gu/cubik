@@ -46,7 +46,7 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   - Create the static files for deployment:
 
     ```shell
-    flutter build web --release
+    flutter build web --release --wasm
     ```
 
   - Serve the files using a web server.
