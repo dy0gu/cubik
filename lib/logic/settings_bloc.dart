@@ -69,7 +69,7 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, Settings> {
   @override
   Map<String, dynamic> toJson(Settings state) => <String, dynamic>{
         "theme_mode": state.themeMode.index,
-        "theme_seed": state.themeSeed.value,
+        "theme_seed": state.themeSeed.toARGB32(),
         "locale_language_code": state.locale?.languageCode,
         "locale_country_code": state.locale?.countryCode,
       };

@@ -199,10 +199,11 @@ class HomeScreen extends StatelessWidget {
                               width: 40,
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(35),
-                                onTap: () => Share.share(
+                                onTap: () =>
+                                    SharePlus.instance.share(ShareParams(
                                   subject: locale.shareBody(game.moves),
-                                  locale.shareBody(game.moves),
-                                ),
+                                  text: locale.shareBody(game.moves),
+                                )),
                                 child: const Icon(Icons.share),
                               ),
                             ),
