@@ -112,27 +112,37 @@ class SettingsScreen extends StatelessWidget {
                                             style: theme.textTheme.bodyLarge),
                                         Expanded(
                                           child: Slider(
-                                              value: settings.themeSeed.red
+                                              value: ((settings.themeSeed.r *
+                                                              255.0)
+                                                          .round() &
+                                                      0xff)
                                                   .toDouble(),
                                               min: 0,
                                               max: 255,
                                               onChanged: (value) {
                                                 builderContext
                                                     .read<SettingsBloc>()
-                                                    .add(
-                                                        SettingsThemeSeedChanged(
-                                                            Color.fromARGB(
-                                                                255,
-                                                                value.toInt(),
-                                                                settings
-                                                                    .themeSeed
-                                                                    .green,
-                                                                settings
-                                                                    .themeSeed
-                                                                    .blue)));
+                                                    .add(SettingsThemeSeedChanged(
+                                                        Color.fromARGB(
+                                                            255,
+                                                            value.toInt(),
+                                                            (settings.themeSeed
+                                                                            .g *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff,
+                                                            (settings.themeSeed
+                                                                            .b *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff)));
                                               }),
                                         ),
-                                        Text(settings.themeSeed.red.toString(),
+                                        Text(
+                                            ((settings.themeSeed.r * 255.0)
+                                                        .round() &
+                                                    0xff)
+                                                .toString(),
                                             style: theme.textTheme.bodyLarge),
                                       ],
                                     ),
@@ -143,28 +153,37 @@ class SettingsScreen extends StatelessWidget {
                                             style: theme.textTheme.bodyLarge),
                                         Expanded(
                                           child: Slider(
-                                              value: settings.themeSeed.green
+                                              value: ((settings.themeSeed.g *
+                                                              255.0)
+                                                          .round() &
+                                                      0xff)
                                                   .toDouble(),
                                               min: 0,
                                               max: 255,
                                               onChanged: (value) {
                                                 builderContext
                                                     .read<SettingsBloc>()
-                                                    .add(
-                                                        SettingsThemeSeedChanged(
-                                                            Color.fromARGB(
-                                                                255,
-                                                                settings
-                                                                    .themeSeed
-                                                                    .red,
-                                                                value.toInt(),
-                                                                settings
-                                                                    .themeSeed
-                                                                    .blue)));
+                                                    .add(SettingsThemeSeedChanged(
+                                                        Color.fromARGB(
+                                                            255,
+                                                            (settings.themeSeed
+                                                                            .r *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff,
+                                                            value.toInt(),
+                                                            (settings.themeSeed
+                                                                            .b *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff)));
                                               }),
                                         ),
                                         Text(
-                                            settings.themeSeed.green.toString(),
+                                            ((settings.themeSeed.g * 255.0)
+                                                        .round() &
+                                                    0xff)
+                                                .toString(),
                                             style: theme.textTheme.bodyLarge),
                                       ],
                                     ),
@@ -175,28 +194,36 @@ class SettingsScreen extends StatelessWidget {
                                             style: theme.textTheme.bodyLarge),
                                         Expanded(
                                           child: Slider(
-                                              value: settings.themeSeed.blue
+                                              value: ((settings.themeSeed.b *
+                                                              255.0)
+                                                          .round() &
+                                                      0xff)
                                                   .toDouble(),
                                               min: 0,
                                               max: 255,
                                               onChanged: (value) {
                                                 builderContext
                                                     .read<SettingsBloc>()
-                                                    .add(
-                                                        SettingsThemeSeedChanged(
-                                                            Color.fromARGB(
-                                                                255,
-                                                                settings
-                                                                    .themeSeed
-                                                                    .red,
-                                                                settings
-                                                                    .themeSeed
-                                                                    .green,
-                                                                value
-                                                                    .toInt())));
+                                                    .add(SettingsThemeSeedChanged(
+                                                        Color.fromARGB(
+                                                            255,
+                                                            (settings.themeSeed.r *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff,
+                                                            (settings.themeSeed
+                                                                            .g *
+                                                                        255.0)
+                                                                    .round() &
+                                                                0xff,
+                                                            value.toInt())));
                                               }),
                                         ),
-                                        Text(settings.themeSeed.blue.toString(),
+                                        Text(
+                                            ((settings.themeSeed.b * 255.0)
+                                                        .round() &
+                                                    0xff)
+                                                .toString(),
                                             style: theme.textTheme.bodyLarge),
                                       ],
                                     ),

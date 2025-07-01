@@ -15,30 +15,30 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  hydrated_bloc: ^9.1.3
-  flutter_bloc: ^8.1.3
-  path_provider: ^2.1.2
-  flutter_animate: ^4.4.1
-  equatable: ^2.0.5
-  go_router: ^14.2.2
-  image_picker: ^1.0.7
-  fl_chart: ^0.68.0
-  cupertino_icons: ^1.0.6
-  confetti: ^0.7.0
-  share_plus: ^10.0.0
-  url_launcher: ^6.2.5
-  simple_icons: ^10.1.3
-  logger: ^2.2.0
+  hydrated_bloc: 10.0.0
+  flutter_bloc: 9.1.1
+  path_provider: 2.1.5
+  flutter_animate: 4.5.2
+  equatable: 2.0.7
+  go_router: 15.2.4
+  image_picker: 1.1.2
+  fl_chart: 1.0.0
+  cupertino_icons: 1.0.8
+  confetti: 0.8.0
+  share_plus: 11.0.0
+  url_launcher: 6.3.1
+  simple_icons: 14.6.1
+  logger: 2.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^9.1.7
-  mocktail: ^1.0.4
-  flutter_lints: ^4.0.0
-  flutter_launcher_icons: ^0.13.1
-  flutter_native_splash: ^2.3.1
-  husky: ^0.1.7
+  bloc_test: 10.0.0
+  mocktail: 1.0.4
+  flutter_lints: 6.0.0
+  flutter_launcher_icons: 0.14.4
+  flutter_native_splash: 2.4.6
+  husky: 0.1.7
 
 flutter:
   uses-material-design: true
