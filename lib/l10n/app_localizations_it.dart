@@ -174,7 +174,7 @@ class AppLocalizationsIt extends AppLocalizations {
       one: 'solo 1 mossa',
       zero: 'nessuna mossa',
     );
-    return 'Ho appena vinto una partita a Cubik utilizzando $_temp0! Vedi se puoi fare meglio su cubik.win o utilizzando l\'app.';
+    return 'Ho appena vinto una partita a Cubik utilizzando $_temp0! Vedi se puoi fare meglio su cubik.dy0gu.com o utilizzando l\'app.';
   }
 
   @override

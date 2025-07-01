@@ -50,7 +50,7 @@
   "winPopup": "Ganhaste com {moves, plural, =0{nenhum movimento} =1{apenas 1 movimento} other{{moves} movimentos}}!",
   "share": "Partilhar",
   "shareTitle": "A minha última vitória no Cubik!",
-  "shareBody": "Acabei de ganhar um jogo de Cubik com {moves, plural, =0{nenhum movimento} =1{apenas 1 movimento} other{{moves} movimentos}}! Vê se consegues fazer melhor em cubik.win, ou usando a aplicação.",
+  "shareBody": "Acabei de ganhar um jogo de Cubik com {moves, plural, =0{nenhum movimento} =1{apenas 1 movimento} other{{moves} movimentos}}! Vê se consegues fazer melhor em cubik.dy0gu.com, ou usando a aplicação.",
   "helpTitle": "Aprende a jogar Cubik!",
   "helpBodyFirst": "O objetivo é simples, tens de ordenar as peças na sua posição correta, da esquerda para a direita e de cima para baixo.",
   "helpBodySecond": "Move as peças utilizando o espaço vazio. Quando uma peça está na posição correta, irá mostrar uma nova cor de borda.",

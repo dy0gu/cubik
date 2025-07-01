@@ -173,7 +173,7 @@ class AppLocalizationsKo extends AppLocalizations {
       one: '1회 움직임으로 이겼습니다!',
       zero: '움직임 없이 이겼습니다!',
     );
-    return '$_temp0 cubik.win에서 내 성적을 확인하고 도전하세요.';
+    return '$_temp0 cubik.dy0gu.com에서 내 성적을 확인하고 도전하세요.';
   }
 
   @override

@@ -48,7 +48,7 @@
   "winPopup": "Du hast gewonnen und dabei {moves, plural, =0{keine Züge} =1{nur 1 Zug} other{{moves} Züge}} gemacht!",
   "share": "Teilen",
   "shareTitle": "Mein neuester Cubik-Sieg!",
-  "shareBody": "Ich habe gerade ein Spiel Cubik gewonnen und dabei {moves, plural, =0{keine Züge} =1{nur 1 Zug} other{{moves} Züge}} gemacht! Sieh nach, ob du es besser machen kannst auf cubik.win oder mit der App.",
+  "shareBody": "Ich habe gerade ein Spiel Cubik gewonnen und dabei {moves, plural, =0{keine Züge} =1{nur 1 Zug} other{{moves} Züge}} gemacht! Sieh nach, ob du es besser machen kannst auf cubik.dy0gu.com oder mit der App.",
   "helpTitle": "Lerne, Cubik zu spielen!",
   "helpBodyFirst": "Das Ziel ist einfach: Du musst die Stücke in ihre geordnete Position bringen, von oben links nach unten rechts.",
   "helpBodySecond": "Bewege die Stücke, indem du den leeren Platz benutzt. Wenn ein Stück an der richtigen Stelle ist, wird es eine neue Rahmenfarbe anzeigen.",

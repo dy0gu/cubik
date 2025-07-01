@@ -48,7 +48,7 @@
   "winPopup": "{moves, plural, =0{움직임 없이 이겼습니다!} =1{1회 움직임으로 이겼습니다!} other{{moves} 회 움직임으로 이겼습니다!}}",
   "share": "공유",
   "shareTitle": "나의 최신 Cubik 승리!",
-  "shareBody": "{moves, plural, =0{움직임 없이 이겼습니다!} =1{1회 움직임으로 이겼습니다!} other{{moves} 회 움직임으로 이겼습니다!}} cubik.win에서 내 성적을 확인하고 도전하세요.",
+  "shareBody": "{moves, plural, =0{움직임 없이 이겼습니다!} =1{1회 움직임으로 이겼습니다!} other{{moves} 회 움직임으로 이겼습니다!}} cubik.dy0gu.com에서 내 성적을 확인하고 도전하세요.",
   "helpTitle": "Cubik 플레이 방법 배우기!",
   "helpBodyFirst": "목표는 간단합니다. 조각을 왼쪽 위부터 오른쪽 아래로 순서대로 정렬해야 합니다.",
   "helpBodySecond": "빈 공간을 사용하여 조각을 이동합니다. 조각이 올바른 위치에 있으면 새로운 테두리 색상이 표시됩니다.",

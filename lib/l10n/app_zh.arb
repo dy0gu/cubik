@@ -48,7 +48,7 @@
   "winPopup": "您赢得了{moves, plural, =0{不需要移动} =1{仅移动一次} other{{moves}次移动}}！",
   "share": "分享",
   "shareTitle": "我最近在Cubik中的胜利！",
-  "shareBody": "我刚刚在Cubik中赢得了一场比赛，使用了{moves, plural, =0{不需要移动} =1{仅移动一次} other{{moves}次移动}}！看看您能否在cubik.win或使用应用程序做得更好。",
+  "shareBody": "我刚刚在Cubik中赢得了一场比赛，使用了{moves, plural, =0{不需要移动} =1{仅移动一次} other{{moves}次移动}}！看看您能否在cubik.dy0gu.com或使用应用程序做得更好。",
   "helpTitle": "学习如何玩Cubik！",
   "helpBodyFirst": "目标很简单，您需要将各个方块排序到它们的有序位置，从左上到右下。",
   "helpBodySecond": "通过使用空白空间移动方块。当方块位于正确位置时，将显示新的边框颜色。",

@@ -174,7 +174,7 @@ class AppLocalizationsAr extends AppLocalizations {
       one: 'حركة واحدة فقط',
       zero: 'لا يوجد حركات',
     );
-    return 'لقد فزت للتو بلعبة Cubik باستخدام $_temp0! انظر إذا كنت تستطيع القيام بذلك بشكل أفضل على cubik.win ، أو باستخدام التطبيق.';
+    return 'لقد فزت للتو بلعبة Cubik باستخدام $_temp0! انظر إذا كنت تستطيع القيام بذلك بشكل أفضل على cubik.dy0gu.com ، أو باستخدام التطبيق.';
   }
 
   @override

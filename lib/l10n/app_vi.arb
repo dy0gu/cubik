@@ -48,7 +48,7 @@
   "winPopup": "Bạn đã chiến thắng với {moves, plural, =0{không có nước đi} =1{chỉ 1 nước đi} other{{moves} nước đi}}!",
   "share": "Chia sẻ",
   "shareTitle": "Thành công mới nhất của tôi trong Cubik!",
-  "shareBody": "Tôi vừa thắng trò chơi Cubik với {moves, plural, =0{không có nước đi} =1{chỉ 1 nước đi} other{{moves} nước đi}}! Xem liệu bạn có thể làm tốt hơn tại cubik.win, hoặc sử dụng ứng dụng.",
+  "shareBody": "Tôi vừa thắng trò chơi Cubik với {moves, plural, =0{không có nước đi} =1{chỉ 1 nước đi} other{{moves} nước đi}}! Xem liệu bạn có thể làm tốt hơn tại cubik.dy0gu.com, hoặc sử dụng ứng dụng.",
   "helpTitle": "Học cách chơi Cubik!",
   "helpBodyFirst": "Mục tiêu rất đơn giản, bạn cần sắp xếp các mảnh vào vị trí của chúng, từ trên cùng bên trái đến dưới cùng bên phải.",
   "helpBodySecond": "Di chuyển các mảnh bằng cách sử dụng không gian trống. Khi một mảnh ở vị trí đúng, nó sẽ hiển thị một màu viền mới.",

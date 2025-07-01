@@ -174,7 +174,7 @@ class AppLocalizationsEn extends AppLocalizations {
       one: 'only 1 move',
       zero: 'no moves',
     );
-    return 'I just won a game of Cubik using $_temp0! See if you can do better at cubik.win, or using the app.';
+    return 'I just won a game of Cubik using $_temp0! See if you can do better at cubik.dy0gu.com, or using the app.';
   }
 
   @override

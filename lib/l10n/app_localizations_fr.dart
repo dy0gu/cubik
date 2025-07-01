@@ -175,7 +175,7 @@ class AppLocalizationsFr extends AppLocalizations {
       one: 'seulement 1 mouvement',
       zero: 'aucun mouvement',
     );
-    return 'Je viens de remporter une partie de Cubik en utilisant $_temp0 ! Voyez si vous pouvez faire mieux sur cubik.win, ou en utilisant l\'application.';
+    return 'Je viens de remporter une partie de Cubik en utilisant $_temp0 ! Voyez si vous pouvez faire mieux sur cubik.dy0gu.com, ou en utilisant l\'application.';
   }
 
   @override

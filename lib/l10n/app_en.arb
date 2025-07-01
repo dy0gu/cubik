@@ -50,7 +50,7 @@
   "winPopup": "You won using {moves, plural, =0{no moves} =1{only 1 move} other{{moves} moves}}!",
   "share": "Share",
   "shareTitle": "My most recent Cubik victory!",
-  "shareBody": "I just won a game of Cubik using {moves, plural, =0{no moves} =1{only 1 move} other{{moves} moves}}! See if you can do better at cubik.win, or using the app.",
+  "shareBody": "I just won a game of Cubik using {moves, plural, =0{no moves} =1{only 1 move} other{{moves} moves}}! See if you can do better at cubik.dy0gu.com, or using the app.",
   "helpTitle": "Learn how to play Cubik!",
   "helpBodyFirst": "The goal is simple, you need to sort the pieces into their ordered position, from top left to bottom right.",
   "helpBodySecond": "Move the pieces around by using the empty space. When a pieces is in the correct position, it will show a new border color.",

@@ -174,7 +174,7 @@ class AppLocalizationsTh extends AppLocalizations {
       one: 'เพียง 1 ครั้ง',
       zero: 'ไม่มีการเคลื่อนไหว',
     );
-    return 'ฉันเพิ่งชนะเกม Cubik โดยใช้ $_temp0! ดูว่าคุณจะทำได้ดีกว่าที่ cubik.win หรือใช้แอป';
+    return 'ฉันเพิ่งชนะเกม Cubik โดยใช้ $_temp0! ดูว่าคุณจะทำได้ดีกว่าที่ cubik.dy0gu.com หรือใช้แอป';
   }
 
   @override

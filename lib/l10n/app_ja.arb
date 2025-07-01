@@ -48,7 +48,7 @@
   "winPopup": "{moves, plural, =0{動かずに勝ちました！} =1{1回の動作で勝ちました！} other{{moves} 回の動作で勝ちました！}}",
   "share": "共有",
   "shareTitle": "私の最新のCubikの勝利！",
-  "shareBody": "{moves, plural, =0{動かずに勝ちました！} =1{1回の動作で勝ちました！} other{{moves} 回の動作で勝ちました！}} cubik.win で私の成績を見て、あなたも挑戦してみてください。",
+  "shareBody": "{moves, plural, =0{動かずに勝ちました！} =1{1回の動作で勝ちました！} other{{moves} 回の動作で勝ちました！}} cubik.dy0gu.com で私の成績を見て、あなたも挑戦してみてください。",
   "helpTitle": "Cubikのプレイ方法を学ぶ！",
   "helpBodyFirst": "目標はシンプルです。ピースを左上から右下に順番に並べる必要があります。",
   "helpBodySecond": "空きスペースを使ってピースを移動します。ピースが正しい位置にあると、新しい枠の色が表示されます。",

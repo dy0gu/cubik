@@ -48,7 +48,7 @@
   "winPopup": "¡Ganaste usando {moves, plural, =0{ningún movimiento} =1{solo 1 movimiento} other{{moves} movimientos}}!",
   "share": "Compartir",
   "shareTitle": "¡Mi última victoria en Cubik!",
-  "shareBody": "Acabo de ganar un juego de Cubik usando {moves, plural, =0{ningún movimiento} =1{solo 1 movimiento} other{{moves} movimientos}}! ¡Ve si puedes hacerlo mejor en cubik.win, o usando la aplicación.",
+  "shareBody": "Acabo de ganar un juego de Cubik usando {moves, plural, =0{ningún movimiento} =1{solo 1 movimiento} other{{moves} movimientos}}! ¡Ve si puedes hacerlo mejor en cubik.dy0gu.com, o usando la aplicación.",
   "helpTitle": "¡Aprende a jugar a Cubik!",
   "helpBodyFirst": "El objetivo es simple, debes ordenar las piezas en su posición correcta, de izquierda a derecha y de arriba abajo.",
   "helpBodySecond": "Mueve las piezas utilizando el espacio vacío. Cuando una pieza está en la posición correcta, mostrará un nuevo color de borde.",

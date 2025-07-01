@@ -419,7 +419,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareBody.
   ///
   /// In en, this message translates to:
-  /// **'I just won a game of Cubik using {moves, plural, =0{no moves} =1{only 1 move} other{{moves} moves}}! See if you can do better at cubik.win, or using the app.'**
+  /// **'I just won a game of Cubik using {moves, plural, =0{no moves} =1{only 1 move} other{{moves} moves}}! See if you can do better at cubik.dy0gu.com, or using the app.'**
   String shareBody(num moves);
 
   /// No description provided for @helpTitle.

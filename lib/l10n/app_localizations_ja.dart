@@ -173,7 +173,7 @@ class AppLocalizationsJa extends AppLocalizations {
       one: '1回の動作で勝ちました！',
       zero: '動かずに勝ちました！',
     );
-    return '$_temp0 cubik.win で私の成績を見て、あなたも挑戦してみてください。';
+    return '$_temp0 cubik.dy0gu.com で私の成績を見て、あなたも挑戦してみてください。';
   }
 
   @override

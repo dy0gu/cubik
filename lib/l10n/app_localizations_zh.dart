@@ -173,7 +173,7 @@ class AppLocalizationsZh extends AppLocalizations {
       one: '仅移动一次',
       zero: '不需要移动',
     );
-    return '我刚刚在Cubik中赢得了一场比赛，使用了$_temp0！看看您能否在cubik.win或使用应用程序做得更好。';
+    return '我刚刚在Cubik中赢得了一场比赛，使用了$_temp0！看看您能否在cubik.dy0gu.com或使用应用程序做得更好。';
   }
 
   @override

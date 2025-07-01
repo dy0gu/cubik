@@ -174,7 +174,7 @@ class AppLocalizationsVi extends AppLocalizations {
       one: 'chỉ 1 nước đi',
       zero: 'không có nước đi',
     );
-    return 'Tôi vừa thắng trò chơi Cubik với $_temp0! Xem liệu bạn có thể làm tốt hơn tại cubik.win, hoặc sử dụng ứng dụng.';
+    return 'Tôi vừa thắng trò chơi Cubik với $_temp0! Xem liệu bạn có thể làm tốt hơn tại cubik.dy0gu.com, hoặc sử dụng ứng dụng.';
   }
 
   @override

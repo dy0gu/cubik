@@ -174,7 +174,7 @@ class AppLocalizationsDe extends AppLocalizations {
       one: 'nur 1 Zug',
       zero: 'keine Züge',
     );
-    return 'Ich habe gerade ein Spiel Cubik gewonnen und dabei $_temp0 gemacht! Sieh nach, ob du es besser machen kannst auf cubik.win oder mit der App.';
+    return 'Ich habe gerade ein Spiel Cubik gewonnen und dabei $_temp0 gemacht! Sieh nach, ob du es besser machen kannst auf cubik.dy0gu.com oder mit der App.';
   }
 
   @override

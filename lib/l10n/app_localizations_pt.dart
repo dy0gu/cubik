@@ -174,7 +174,7 @@ class AppLocalizationsPt extends AppLocalizations {
       one: 'apenas 1 movimento',
       zero: 'nenhum movimento',
     );
-    return 'Acabei de ganhar um jogo de Cubik com $_temp0! Vê se consegues fazer melhor em cubik.win, ou usando a aplicação.';
+    return 'Acabei de ganhar um jogo de Cubik com $_temp0! Vê se consegues fazer melhor em cubik.dy0gu.com, ou usando a aplicação.';
   }
 
   @override
@@ -423,7 +423,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
       one: 'apenas 1 movimento',
       zero: 'nenhum movimento',
     );
-    return 'Acabei de ganhar um jogo de Cubik usando $_temp0! Veja se você consegue fazer melhor em cubik.win, ou usando o aplicativo.';
+    return 'Acabei de ganhar um jogo de Cubik usando $_temp0! Veja se você consegue fazer melhor em cubik.dy0gu.com, ou usando o aplicativo.';
   }
 
   @override
@@ -672,7 +672,7 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
       one: 'apenas 1 movimento',
       zero: 'nenhum movimento',
     );
-    return 'Acabei de ganhar um jogo de Cubik com $_temp0! Vê se consegues fazer melhor em cubik.win, ou usando a aplicação.';
+    return 'Acabei de ganhar um jogo de Cubik com $_temp0! Vê se consegues fazer melhor em cubik.dy0gu.com, ou usando a aplicação.';
   }
 
   @override
