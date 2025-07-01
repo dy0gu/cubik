@@ -46,6 +46,9 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   - Create the static files for deployment:
 
     ```shell
+    flutter clean
+    flutter pub get
+    flutter gen-l10n
     flutter build web --release --wasm
     ```
 
@@ -56,6 +59,9 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   - Create the app bundle for play store (use `apk` for local):
 
     ```shell
+    flutter clean
+    flutter pub get
+    flutter gen-l10n
     flutter build appbundle --release
     ```
 
@@ -70,5 +76,7 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
     It means you did not create the `android\key.properties` file correctly. This file is needed for signing the bundle and should be based on the `android\key.properties.example` file.
 
   - Upload the app bundle to the Google Play Console.
+
+    If Google Play says you must target the latest Android version, simply update flutter (or manually edit the [targetSdkVersion](./android/app/build.gradle) file to a string literal) and compile the app again.
 
 - TODO...
