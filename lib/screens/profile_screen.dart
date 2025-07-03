@@ -7,6 +7,7 @@ import "package:go_router/go_router.dart";
 import "package:cubik/l10n/app_localizations.dart";
 import "package:cubik/logic/profile_bloc.dart";
 import "package:fl_chart/fl_chart.dart";
+import "package:material_symbols_icons/material_symbols_icons.dart";
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -27,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
                   message: locale.back,
                   child: FloatingActionButton(
                     heroTag: null,
-                    child: const Icon(Icons.arrow_back),
+                    child: const Icon(Symbols.arrow_back),
                     onPressed: () => context.go("/"),
                   ),
                 ),
@@ -58,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                           ? MemoryImage(base64Decode(profile.base64Image))
                           : null,
                       child: profile.base64Image.isEmpty
-                          ? const Icon(Icons.person, size: 60)
+                          ? const Icon(Symbols.person, size: 60)
                           : null,
                     ),
                   ),
@@ -72,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
                         onPressed: () => context
                             .read<ProfileBloc>()
                             .add(ProfilePictureUploaded()),
-                        child: const Icon(Icons.camera_alt),
+                        child: const Icon(Symbols.camera_alt),
                       ),
                     ),
                   ),

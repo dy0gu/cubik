@@ -10,6 +10,7 @@ import "package:flutter_animate/flutter_animate.dart";
 import "package:share_plus/share_plus.dart";
 import "package:url_launcher/url_launcher.dart";
 import "package:simple_icons/simple_icons.dart";
+import "package:material_symbols_icons/material_symbols_icons.dart";
 import "dart:io" show Platform;
 import "package:flutter/foundation.dart" show kIsWeb;
 
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     message: locale.settings,
                     child: FloatingActionButton(
                         heroTag: null,
-                        child: const Icon(Icons.settings),
+                        child: const Icon(Symbols.settings),
                         onPressed: () => context.go("/settings")),
                   ),
                   const SizedBox(width: 15),
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     message: locale.help,
                     child: FloatingActionButton(
                         heroTag: null,
-                        child: const Icon(Icons.info),
+                        child: const Icon(Symbols.info),
                         onPressed: () => showDialog(
                             barrierDismissible: false,
                             context: context,
@@ -78,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                                                   onPressed: () =>
                                                       Navigator.pop(context),
                                                   child: const Icon(
-                                                    Icons.arrow_back,
+                                                    Symbols.arrow_back,
                                                   )),
                                             ),
                                             Tooltip(
@@ -158,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                   message: locale.profile,
                   child: FloatingActionButton(
                       heroTag: null,
-                      child: const Icon(Icons.person),
+                      child: const Icon(Symbols.person),
                       onPressed: () => context.go("/profile")),
                 ),
               ],
@@ -204,7 +205,7 @@ class HomeScreen extends StatelessWidget {
                                   subject: locale.shareBody(game.moves),
                                   text: locale.shareBody(game.moves),
                                 )),
-                                child: const Icon(Icons.share),
+                                child: const Icon(Symbols.share),
                               ),
                             ),
                           ),
@@ -336,7 +337,7 @@ class HomeScreen extends StatelessWidget {
                           child: ElevatedButton(
                               onPressed: () =>
                                   context.read<GameBloc>().add(GameShuffled()),
-                              child: const Icon(Icons.shuffle)),
+                              child: const Icon(Symbols.shuffle)),
                         ),
                         Tooltip(
                           waitDuration: const Duration(seconds: 1),
@@ -345,7 +346,7 @@ class HomeScreen extends StatelessWidget {
                               onPressed: () => context
                                   .read<GameBloc>()
                                   .add(GameSizeIncreased()),
-                              child: const Icon(Icons.add)),
+                              child: const Icon(Symbols.add)),
                         ),
                         Tooltip(
                           waitDuration: const Duration(seconds: 1),
@@ -354,7 +355,7 @@ class HomeScreen extends StatelessWidget {
                               onPressed: () => context
                                   .read<GameBloc>()
                                   .add(GameSizeDecreased()),
-                              child: const Icon(Icons.remove)),
+                              child: const Icon(Symbols.remove)),
                         ),
                         BlocProvider(
                           lazy: true,
@@ -370,7 +371,7 @@ class HomeScreen extends StatelessWidget {
                                     onPressed: () => context
                                         .read<GameBloc>()
                                         .add(GameCheatActivated()),
-                                    child: const Icon(Icons.lightbulb)),
+                                    child: const Icon(Symbols.lightbulb)),
                               ),
                             ),
                           ),

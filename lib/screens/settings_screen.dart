@@ -3,6 +3,7 @@ import "package:cubik/l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:cubik/logic/settings_bloc.dart";
+import "package:material_symbols_icons/material_symbols_icons.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -23,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
                   message: locale.back,
                   child: FloatingActionButton(
                     heroTag: null,
-                    child: const Icon(Icons.arrow_back),
+                    child: const Icon(Symbols.arrow_back),
                     onPressed: () => context.go("/"),
                   ),
                 ),
@@ -47,12 +48,14 @@ class SettingsScreen extends StatelessWidget {
                 verticalOffset: 35,
                 message: locale.theme,
                 child: DropdownMenu<ThemeMode>(
+                  trailingIcon: const Icon(Symbols.arrow_drop_down),
+                  selectedTrailingIcon: const Icon(Symbols.arrow_drop_up),
                   inputDecorationTheme: InputDecorationTheme(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(22),
                     ),
                   ),
-                  leadingIcon: const Icon(Icons.color_lens),
+                  leadingIcon: const Icon(Symbols.color_lens),
                   requestFocusOnTap: false,
                   initialSelection:
                       context.read<SettingsBloc>().state.themeMode,
@@ -88,7 +91,7 @@ class SettingsScreen extends StatelessWidget {
                   elevation: 1,
                   heroTag: null,
                   child: Icon(
-                    Icons.colorize,
+                    Symbols.colorize,
                     color: theme.colorScheme.onPrimaryContainer,
                   ),
                   onPressed: () {
@@ -238,7 +241,7 @@ class SettingsScreen extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.of(builderContext).pop();
                                       },
-                                      child: const Icon(Icons.arrow_back),
+                                      child: const Icon(Symbols.arrow_back),
                                     ),
                                   ),
                                 ],
@@ -255,12 +258,14 @@ class SettingsScreen extends StatelessWidget {
             verticalOffset: 35,
             message: locale.language,
             child: DropdownMenu<Locale?>(
+              trailingIcon: const Icon(Symbols.arrow_drop_down),
+              selectedTrailingIcon: const Icon(Symbols.arrow_drop_up),
               inputDecorationTheme: InputDecorationTheme(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(22),
                 ),
               ),
-              leadingIcon: const Icon(Icons.language),
+              leadingIcon: const Icon(Symbols.language),
               requestFocusOnTap: false,
               initialSelection: context.watch<SettingsBloc>().state.locale,
               onSelected: (Locale? value) {

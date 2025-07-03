@@ -32,6 +32,8 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
   dart run husky install
   ```
 
+  When using husky, commits may take a bit longer and fail if the linter finds issues. Simply fix, stage and commit these files again to proceed.
+
 ## Build & Deployment 🚀
 
 - For setting the final icon and splash screen on all platforms see
@@ -44,7 +46,7 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
     ```shell
     flutter clean
     flutter pub get
-    flutter build web --release --wasm
+    flutter build web --release --wasm --no-tree-shake-icons
     ```
 
 - Serve the files using a web server.
@@ -56,7 +58,7 @@ Cubik is a simple game based on the 8-puzzle dilemma. The goal is to arrange the
     ```shell
     flutter clean
     flutter pub get
-    flutter build appbundle --release
+    flutter build appbundle --release --no-tree-shake-icons
     ```
 
     If you get this error:
