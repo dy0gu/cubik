@@ -186,7 +186,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helpBodySecond =>
-      'Move the pieces around by using the empty space. When a pieces is in the correct position, it will show a new border color.';
+      'Move the pieces around by using the empty space. When a piece is in the correct position, it will show a new border color.';
 
   @override
   String get pageNotFound =>

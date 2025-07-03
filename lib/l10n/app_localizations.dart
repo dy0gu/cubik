@@ -437,7 +437,7 @@ abstract class AppLocalizations {
   /// No description provided for @helpBodySecond.
   ///
   /// In en, this message translates to:
-  /// **'Move the pieces around by using the empty space. When a pieces is in the correct position, it will show a new border color.'**
+  /// **'Move the pieces around by using the empty space. When a piece is in the correct position, it will show a new border color.'**
   String get helpBodySecond;
 
   /// No description provided for @pageNotFound.
