@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/dy0gu/cubik/compare/v2.0.0...v2.0.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* improve app icon look on older androids ([a98302b](https://github.com/dy0gu/cubik/commit/a98302b7d3c240596a229a469908507725b9a9c4))
+
 ## [2.0.0](https://github.com/dy0gu/cubik/compare/v1.0.1...v2.0.0) (2025-06-30)
 
 
