@@ -7,7 +7,7 @@ on:
     types: [synchronize]
 
 jobs:
-  code:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +17,5 @@ jobs:
       - run: flutter config --no-cli-animations
       - name: Install dependencies
         run: flutter pub get
-      - name: Generate i18n files
-        run: flutter gen-l10n
-      - name: Run Flutter linter
-        run: flutter analyze
+      - name: Run check
+        run: flutter analyze && dart format -o none --set-exit-if-changed .
